@@ -209,8 +209,7 @@
         "active": {
           "location": "query",
           "description": "Active (true, false, both)",
-          "type": "string",
-          "default": "true"
+          "type": "string"
         }
       }
     },
@@ -339,75 +338,61 @@
         "active": {
           "location": "query",
           "type": "string",
-          "required": false,
-          "description": "possible values true/false/both. By default true. If false, only archived projects are returned.",
-          "default": "true"
+          "description": "possible values true/false/both. By default true. If false, only archived projects are returned."
         },
         "since": {
           "location": "query",
           "type": "integer",
-          "required": false,
           "description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
         },
         "billable": {
           "location": "query",
-          "type": "boolean",
-          "required": false
+          "type": "boolean"
         },
         "user_ids": {
           "location": "query",
           "type": "array",
           "items": {
             "type": "integer"
-          },
-          "required": false
+          }
         },
         "client_ids": {
           "location": "query",
           "type": "array",
           "items": {
             "type": "integer"
-          },
-          "required": false
+          }
         },
         "group_ids": {
           "location": "query",
           "type": "array",
           "items": {
             "type": "integer"
-          },
-          "required": false
+          }
         },
         "name": {
           "location": "string",
-          "type": "string",
-          "required": true
+          "type": "string"
         },
         "page": {
           "location": "query",
-          "type": "integer",
-          "required": true
+          "type": "integer"
         },
         "sort_field": {
           "location": "query",
-          "type": "string",
-          "required": true
+          "type": "string"
         },
         "sort_order": {
           "location": "query",
-          "type": "string",
-          "required": true
+          "type": "string"
         },
         "only_templates": {
           "location": "query",
-          "type": "boolean",
-          "required": true,
-          "default": false
+          "type": "boolean"
         },
         "per_page": {
           "location": "query",
           "type": "integer",
-          "required": false,
           "description": "Number of records per page."
         }
       }
@@ -623,14 +608,12 @@
         "project_ids": {
           "location": "query",
           "type": "string",
-          "description": "Numeric IDs of projects, comma-separated",
-          "required": false
+          "description": "Numeric IDs of projects, comma-separated"
         },
         "with_group_members": {
           "location": "query",
           "type": "boolean",
-          "description": "Include group members",
-          "required": false
+          "description": "Include group members"
         }
       }
     },
@@ -1421,7 +1404,6 @@
 				"with_related_data": {
 					"type": "boolean",
 					"location": "query",
-					"required": false,
 					"description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
 				}
 			}
