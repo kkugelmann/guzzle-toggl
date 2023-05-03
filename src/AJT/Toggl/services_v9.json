@@ -841,7 +841,8 @@
       }
     },
     "DeleteProjectUsers": {
-      "httpMethod": "DELETE",
+			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
+			"httpMethod": "DELETE",
       "uri": "project_users/{ids}",
       "summary": "Delete multiple Project Users",
       "responseModel": "getResponse",
