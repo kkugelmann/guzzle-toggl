@@ -1258,66 +1258,6 @@
         }
       }
     },
-    "StartTimeEntry": {
-			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#start-a-time-entry but not in the v9 docs or the migration guide.",
-			"httpMethod": "POST",
-      "uri": "time_entries/start",
-      "summary": "Start Time Entry",
-      "responseModel": "getResponse",
-      "parameters": {
-        "time_entry": {
-          "location": "json",
-          "type": "object",
-          "description": "Time Entry Object",
-          "properties": {
-            "description": {
-              "type": "string",
-              "required": false,
-              "description": "(string, not required)"
-            },
-            "wid": {
-              "type": "integer",
-              "required": false,
-              "description": "workspace ID (integer, required if pid or tid not supplied)"
-            },
-            "pid": {
-              "type": "integer",
-              "required": false,
-              "description": "pid: project ID (integer, not required)"
-            },
-            "tid": {
-              "type": "integer",
-              "required": false,
-              "description": "tid: task ID (integer, not required)"
-            },
-            "billable": {
-              "type": "boolean",
-              "required": false,
-              "default": false,
-              "description": "(boolean, not required, default false, available for pro workspaces)"
-            },
-            "created_with": {
-              "type": "string",
-              "required": true,
-              "description": "the name of your client app (string, required)"
-            },
-            "tags": {
-              "type": "array",
-              "required": false,
-              "items": {
-                "type": "string"
-              },
-              "description": "a list of tag names (array of strings, not required)"
-            },
-            "duronly": {
-              "type": "boolean",
-              "required": false,
-              "description": "should Toggl show the start and stop time of this time entry? (boolean, not required)"
-            }
-          }
-        }
-      }
-    },
     "StopTimeEntry": {
       "httpMethod": "PATCH",
       "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}/stop",
