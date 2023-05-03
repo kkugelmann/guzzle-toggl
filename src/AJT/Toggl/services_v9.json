@@ -939,15 +939,21 @@
     },
     "DeleteTag": {
       "httpMethod": "DELETE",
-      "uri": "tags/{id}",
-      "summary": "Delete Tag",
+      "uri": "workspaces/{workspace_id}/tags/{tag_id}",
+      "summary": "Delete workspace tags.",
       "responseModel": "getResponse",
       "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
         "id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Tag ID"
+          "description": "Numeric ID of the tag"
         }
       }
     },
