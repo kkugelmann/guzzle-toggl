@@ -1319,18 +1319,24 @@
       }
     },
     "StopTimeEntry": {
-      "httpMethod": "PUT",
-      "uri": "time_entries/{id}/stop",
+      "httpMethod": "PATCH",
+      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}/stop",
       "summary": "Stop Time Entry",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Time Entry ID"
-        }
-      }
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+				"time_entry_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "TimeEntry ID."
+				}
+			}
     },
     "GetTimeEntry": {
       "httpMethod": "GET",
