@@ -133,7 +133,7 @@
     },
     "GetClients": {
       "httpMethod": "GET",
-      "uri": "clients",
+      "uri": "me/clients",
       "summary": "Get clients visible to user",
       "responseModel": "getResponse"
     },
