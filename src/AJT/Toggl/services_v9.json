@@ -414,15 +414,21 @@
     },
     "GetProject": {
       "httpMethod": "GET",
-      "uri": "projects/{id}",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}",
       "summary": "Get Project details",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+        "project_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Project ID"
+          "description": "Numeric ID of the project"
         }
       }
     },
