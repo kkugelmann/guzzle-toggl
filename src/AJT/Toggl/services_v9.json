@@ -113,15 +113,21 @@
     },
     "DeleteClient": {
       "httpMethod": "DELETE",
-      "uri": "clients/{id}",
-      "summary": "Delete Client",
+      "uri": "workspaces/{workspace_id}/clients/{client_id}",
+      "summary": "Delete workspace client.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace\n"
+				},
+        "client_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Client ID"
+          "description": "Numeric ID of the client\n"
         }
       }
     },
