@@ -1018,9 +1018,9 @@
       "parameters": {
 				"workspace_id": {
 					"location": "uri",
-					"description": "Numeric ID of the workspace",
 					"required": true,
-					"type": "integer"
+					"type": "integer",
+					"description": "Numeric ID of the workspace"
 				},
         "project_id": {
           "location": "uri",
@@ -1038,16 +1038,28 @@
     },
     "UpdateTask": {
       "httpMethod": "PUT",
-      "uri": "tasks/{id}",
-      "summary": "Update Task",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
+      "summary": "Update project task for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Task ID"
-        },
+				"workspace_id": {
+					"location": "uri",
+					"required": true,
+					"type": "integer",
+					"description": "Numeric ID of the workspace"
+				},
+				"project_id": {
+					"location": "uri",
+					"required": true,
+					"type": "integer",
+					"description": "Numeric ID of the project"
+				},
+				"task_id": {
+					"location": "uri",
+					"required": true,
+					"type": "integer",
+					"description": "Numeric ID of the task"
+				},
         "task": {
           "location": "json",
           "type": "object",
