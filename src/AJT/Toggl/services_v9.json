@@ -575,11 +575,17 @@
     },
     "DeleteProject": {
       "httpMethod": "DELETE",
-      "uri": "projects/{id}",
-      "summary": "Delete Project",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}",
+      "summary": "Delete project for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Project ID"
+				},
+        "project_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
