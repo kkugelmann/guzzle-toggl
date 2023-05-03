@@ -143,6 +143,26 @@
       "summary": "Get clients visible to user",
       "responseModel": "getResponse"
     },
+		"ArchiveClient": {
+			"httpMethod": "POST",
+			"uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
+			"summary": "Archives a workspace client and related projects. Only for premium workspaces.",
+			"responseModel": "getResponse",
+			"parameters": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+				"client_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the client"
+				}
+			}
+		},
     "GetClientProjects": {
       "httpMethod": "GET",
       "uri": "clients/{id}/projects",
