@@ -1573,15 +1573,21 @@
     },
     "UpdateWorkspaceUser": {
       "httpMethod": "PUT",
-      "uri": "workspace_users/{id}",
-      "summary": "Update Task",
+      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "summary": "Update the data for a workspace_user in a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Workspace User ID"
+          "description": "Numeric ID of the workspace"
+        },
+        "workspace_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace user"
         },
         "workspace_user": {
           "location": "json",
