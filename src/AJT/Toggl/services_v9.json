@@ -1092,17 +1092,29 @@
     },
     "DeleteTask": {
       "httpMethod": "DELETE",
-      "uri": "tasks/{id}",
-      "summary": "Delete Task",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
+      "summary": "Delete projects task for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Task ID"
-        }
-      }
+				"workspace_id": {
+					"location": "uri",
+					"required": true,
+					"type": "integer",
+					"description": "Numeric ID of the workspace"
+				},
+				"project_id": {
+					"location": "uri",
+					"required": true,
+					"type": "integer",
+					"description": "Numeric ID of the project"
+				},
+				"task_id": {
+					"location": "uri",
+					"required": true,
+					"type": "integer",
+					"description": "Numeric ID of the task"
+				}
+			}
     },
     "UpdateTasks": {
       "httpMethod": "PUT",
