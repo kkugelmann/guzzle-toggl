@@ -1386,21 +1386,31 @@
     },
     "GetTimeEntries": {
       "httpMethod": "GET",
-      "uri": "time_entries",
+      "uri": "me/time_entries",
       "summary": "Get time entries started in a specific time range.If start_date and end_date are not specified, time entries started during the last 9 days are returned.",
       "responseModel": "getResponse",
       "parameters": {
-        "start_date": {
-          "location": "query",
-          "description": "Start date (must be ISO 8601 date and time string)",
-          "type": "string"
-        },
-        "end_date": {
-          "location": "query",
-          "description": "End date (must be ISO 8601 date and time string)",
-          "type": "string"
-        }
-      }
+				"since": {
+					"type": "integer",
+					"location": "query",
+					"description": "Get entries modified since this date using UNIX timestamp, including deleted ones."
+				},
+				"before": {
+					"type": "string",
+					"location": "query",
+					"description": "Get entries with start time, before given date (YYYY-MM-DD) or with time in RFC3339 format."
+				},
+				"start_date": {
+					"type": "string",
+					"location": "query",
+					"description": "Get entries with start time, from start_date YYYY-MM-DD or with time in RFC3339 format. To be used with end_date."
+				},
+				"end_date": {
+					"type": "string",
+					"location": "query",
+					"description": "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 format. To be used with start_date."
+				}
+			}
     },
     "GetCurrentUser": {
       "httpMethod": "GET",
