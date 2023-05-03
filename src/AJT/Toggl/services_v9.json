@@ -434,15 +434,21 @@
     },
     "GetProjectTasks": {
       "httpMethod": "GET",
-      "uri": "projects/{id}/tasks",
-      "summary": "Get Project tasks",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
+      "summary": "Get project tasks for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+        "project_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Project ID"
+          "description": "Numeric ID of the project"
         }
       }
     },
