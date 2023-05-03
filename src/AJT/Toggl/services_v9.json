@@ -1599,15 +1599,21 @@
     },
     "DeleteWorkspaceUser": {
       "httpMethod": "DELETE",
-      "uri": "workspace_users/{id}",
-      "summary": "Delete Workspace User",
+      "uri": "/workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "summary": "Removes user from workspace",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Workspace User ID"
+          "description": "Numeric ID of the workspace."
+        },
+        "workspace_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace user."
         }
       }
     }
