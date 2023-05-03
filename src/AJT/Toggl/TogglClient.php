@@ -14,6 +14,11 @@ use Symfony\Component\Config\FileLocator;
  */
 class TogglClient extends GuzzleClient
 {
+		const DEFAULT_API_VERSION = 'v9';
+		const AVAILABLE_API_VERSIONS = [
+			'v8',
+			'v9',
+		];
 
     /**
      * Factory method to create a new TogglClient
@@ -32,11 +37,15 @@ class TogglClient extends GuzzleClient
     {
         $guzzleClient = new Client(self::getClientConfig($config));
 
-        if (isset($config['apiVersion']) && $config['apiVersion'] !== 'v8') {
-            throw new InvalidApiVersionException('Only v8 is supported at this time');
-        }
+				if (!isset($config['apiVersion'])) {
+					$config['apiVersion'] = self::DEFAULT_API_VERSION;
+				}
 
-        return new self($guzzleClient, self::getAPIDescriptionByJsonFile('services_v8.json'));
+				if (!in_array($config['apiVersion'], self::AVAILABLE_API_VERSIONS)) {
+					throw new InvalidApiVersionException('Invalid API version. Available versions: ' . implode(', ', self::AVAILABLE_API_VERSIONS) . '.');
+				}
+
+        return new self($guzzleClient, self::getAPIDescriptionByJsonFile('services_' . $config['apiVersion'] . '.json'));
     }
 
     protected static function getAPIDescriptionByJsonFile($file): Description
