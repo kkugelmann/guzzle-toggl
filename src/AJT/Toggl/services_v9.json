@@ -1509,6 +1509,58 @@
         }
       }
     },
+    "UpdateWorkspaceUser": {
+      "httpMethod": "PUT",
+      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "summary": "Update the data for a workspace_user in a given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "workspace_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace user"
+        },
+        "workspace_user": {
+          "location": "json",
+          "type": "object",
+          "description": "Workspace User Object",
+          "properties": {
+            "admin": {
+              "type": "boolean",
+              "required": true,
+              "description": "if user is workspace admin (boolean)"
+            }
+          }
+        }
+      }
+    },
+    "DeleteWorkspaceUser": {
+      "httpMethod": "DELETE",
+      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "summary": "Removes user from workspace",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace."
+        },
+        "workspace_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace user."
+        }
+      }
+    },
     "AcceptInvitation": {
       "httpMethod": "POST",
       "uri": "organizations/invitations/{invitation_code}/accept",
@@ -1602,58 +1654,6 @@
           "type": "string",
           "required": true,
           "description": "Invitation code"
-        }
-      }
-    },
-    "UpdateWorkspaceUser": {
-      "httpMethod": "PUT",
-      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
-      "summary": "Update the data for a workspace_user in a given workspace.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "workspace_user_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace user"
-        },
-        "workspace_user": {
-          "location": "json",
-          "type": "object",
-          "description": "Workspace User Object",
-          "properties": {
-            "admin": {
-              "type": "boolean",
-              "required": true,
-              "description": "if user is workspace admin (boolean)"
-            }
-          }
-        }
-      }
-    },
-    "DeleteWorkspaceUser": {
-      "httpMethod": "DELETE",
-      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
-      "summary": "Removes user from workspace",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace."
-        },
-        "workspace_user_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace user."
         }
       }
     }
