@@ -10,12 +10,12 @@
       "summary": "Create Client",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
         "client": {
           "location": "json",
           "type": "object",
@@ -51,19 +51,19 @@
       "summary": "Load client from workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
         "client_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
           "description": "Numeric ID of the client"
         }
-			}
+      }
     },
     "UpdateClient": {
       "httpMethod": "PUT",
@@ -71,12 +71,12 @@
       "summary": "Update workspace client.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
         "client_id": {
           "location": "uri",
           "type": "integer",
@@ -118,12 +118,12 @@
       "summary": "Delete workspace client.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace\n"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace\n"
+        },
         "client_id": {
           "location": "uri",
           "type": "integer",
@@ -139,62 +139,62 @@
       "responseModel": "getResponse"
     },
     "ArchiveClient": {
-        "httpMethod": "POST",
-        "uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
-        "summary": "Archives a workspace client and related projects. Only for premium workspaces.",
-        "responseModel": "getResponse",
-        "parameters": {
-            "workspace_id": {
-                "location": "uri",
-                "type": "integer",
-                "required": true,
-                "description": "Numeric ID of the workspace"
-            },
-            "client_id": {
-                "location": "uri",
-                "type": "integer",
-                "required": true,
-                "description": "Numeric ID of the client"
-            }
+      "httpMethod": "POST",
+      "uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
+      "summary": "Archives a workspace client and related projects. Only for premium workspaces.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "client_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the client"
         }
+      }
     },
     "RestoreClient": {
-        "httpMethod": "POST",
-        "uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
-        "summary": "Restores client and all related or specified projects from the given workspace.",
-        "responseModel": "getResponse",
-        "parameters": {
-            "workspace_id": {
-                "location": "uri",
-                "type": "integer",
-                "required": true,
-                "description": "Numeric ID of the workspace"
-            },
-            "client_id": {
-                "location": "uri",
-                "type": "integer",
-                "required": true,
-                "description": "Numeric ID of the client"
-            },
-            "projects": {
-                "required": false,
-                "location": "json",
-                "type": "array",
-                "description": "Array of project IDs to restore.",
-                "items": {
-                    "type": "integer"
-                }
-            },
-            "restore_all_projects": {
-                "required": false,
-                "location": "json",
-                "type": "boolean",
-                "description": "Restore all projects."
-            }
+      "httpMethod": "POST",
+      "uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
+      "summary": "Restores client and all related or specified projects from the given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "client_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the client"
+        },
+        "projects": {
+          "required": false,
+          "location": "json",
+          "type": "array",
+          "description": "Array of project IDs to restore.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "restore_all_projects": {
+          "required": false,
+          "location": "json",
+          "type": "boolean",
+          "description": "Restore all projects."
         }
+      }
     },
     "GetClientProjects": {
-			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
+      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
       "httpMethod": "GET",
       "uri": "clients/{id}/projects",
       "summary": "Get client projects",
@@ -220,95 +220,95 @@
       "summary": "Create project for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace\n"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace\n"
+        },
         "project": {
           "location": "json",
           "type": "object",
           "description": "Project Object",
           "properties": {
-						"name": {
-							"type": "string",
-							"required": true,
-							"description": "The name of the project (string, required, unique for client and workspace)"
-						},
-						"end_date": {
-							"type": "string",
-							"required": true,
-							"description": "End date of a project timeframe"
-						},
-						"start_date": {
-							"type": "string",
-							"required": true,
-							"description": "Start date of a project timeframe"
-						},
-						"active": {
-							"type": "boolean",
-							"required": false,
-							"default": true,
-							"description": "whether the project is archived or not (boolean, by default true)"
-						},
-						"auto_estimates": {
-							"type": "boolean",
-							"required": false,
-							"description": "Whether estimates are based on task hours, optional, premium feature"
-						},
-						"billable": {
-							"type": "boolean",
-							"required": false,
-							"default": true,
-							"description": "Whether the project is set as billable, optional, premium feature"
-						},
-						"client_id": {
-							"type": "integer",
-							"required": false,
-							"description": "Client ID (integer, not required)"
-						},
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "The name of the project (string, required, unique for client and workspace)"
+            },
+            "end_date": {
+              "type": "string",
+              "required": true,
+              "description": "End date of a project timeframe"
+            },
+            "start_date": {
+              "type": "string",
+              "required": true,
+              "description": "Start date of a project timeframe"
+            },
+            "active": {
+              "type": "boolean",
+              "required": false,
+              "default": true,
+              "description": "whether the project is archived or not (boolean, by default true)"
+            },
+            "auto_estimates": {
+              "type": "boolean",
+              "required": false,
+              "description": "Whether estimates are based on task hours, optional, premium feature"
+            },
+            "billable": {
+              "type": "boolean",
+              "required": false,
+              "default": true,
+              "description": "Whether the project is set as billable, optional, premium feature"
+            },
+            "client_id": {
+              "type": "integer",
+              "required": false,
+              "description": "Client ID (integer, not required)"
+            },
             "cid": {
               "type": "integer",
               "required": false,
               "description": "Client ID (legacy)"
             },
-						"color": {
-							"type": "string",
-							"required": false,
-							"description": "Project color"
-						},
-						"currency": {
-							"type": "string",
-							"required": false,
-							"description": "Project currency, optional, premium feature"
-						},
-						"estimated_hours": {
-							"type": "integer",
-							"required": false,
-							"description": "Estimated hours, optional, premium feature"
-						},
-						"fixed_fee": {
-							"type": "number",
-							"required": false,
-							"description": "Project fixed fee, optional, premium feature"
-						},
-						"is_private": {
-							"type": "boolean",
-							"required": false,
-							"default": true,
-							"description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
-						},
-						"rate": {
-							"type": "number",
-							"required": false,
-							"description": "Hourly rate, optional, premium feature"
-						},
-						"rate_change_mode": {
-							"type": "string",
-							"required": false,
-							"description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
-						},
+            "color": {
+              "type": "string",
+              "required": false,
+              "description": "Project color"
+            },
+            "currency": {
+              "type": "string",
+              "required": false,
+              "description": "Project currency, optional, premium feature"
+            },
+            "estimated_hours": {
+              "type": "integer",
+              "required": false,
+              "description": "Estimated hours, optional, premium feature"
+            },
+            "fixed_fee": {
+              "type": "number",
+              "required": false,
+              "description": "Project fixed fee, optional, premium feature"
+            },
+            "is_private": {
+              "type": "boolean",
+              "required": false,
+              "default": true,
+              "description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
+            },
+            "rate": {
+              "type": "number",
+              "required": false,
+              "description": "Hourly rate, optional, premium feature"
+            },
+            "rate_change_mode": {
+              "type": "string",
+              "required": false,
+              "description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
+            },
             "template": {
               "type": "boolean",
               "required": false,
@@ -339,77 +339,77 @@
         "active": {
           "location": "query",
           "type": "string",
-					"required": false,
+          "required": false,
           "description": "possible values true/false/both. By default true. If false, only archived projects are returned.",
           "default": "true"
         },
-				"since": {
-					"location": "query",
-					"type": "integer",
-					"required": false,
-					"description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
-				},
-				"billable": {
-					"location": "query",
-					"type": "boolean",
-					"required": false
-				},
-				"user_ids": {
-					"location": "query",
-					"type": "array",
-					"items": {
-						"type": "integer"
-					},
-					"required": false
-				},
-				"client_ids": {
-					"location": "query",
-					"type": "array",
-					"items": {
-						"type": "integer"
-					},
-					"required": false
-				},
-				"group_ids": {
-					"location": "query",
-					"type": "array",
-					"items": {
-						"type": "integer"
-					},
-					"required": false
-				},
-				"name": {
-					"location": "string",
-					"type": "string",
-					"required": true
-				},
-				"page": {
-					"location": "query",
-					"type": "integer",
-					"required": true
-				},
-				"sort_field": {
-					"location": "query",
-					"type": "string",
-					"required": true
-				},
-				"sort_order": {
-					"location": "query",
-					"type": "string",
-					"required": true
-				},
-				"only_templates": {
-					"location": "query",
-					"type": "boolean",
-					"required": true,
-					"default": false
-				},
-				"per_page": {
-					"location": "query",
-					"type": "integer",
-					"required": false,
-					"description": "Number of records per page."
-				}
+        "since": {
+          "location": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
+        },
+        "billable": {
+          "location": "query",
+          "type": "boolean",
+          "required": false
+        },
+        "user_ids": {
+          "location": "query",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "required": false
+        },
+        "client_ids": {
+          "location": "query",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "required": false
+        },
+        "group_ids": {
+          "location": "query",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "required": false
+        },
+        "name": {
+          "location": "string",
+          "type": "string",
+          "required": true
+        },
+        "page": {
+          "location": "query",
+          "type": "integer",
+          "required": true
+        },
+        "sort_field": {
+          "location": "query",
+          "type": "string",
+          "required": true
+        },
+        "sort_order": {
+          "location": "query",
+          "type": "string",
+          "required": true
+        },
+        "only_templates": {
+          "location": "query",
+          "type": "boolean",
+          "required": true,
+          "default": false
+        },
+        "per_page": {
+          "location": "query",
+          "type": "integer",
+          "required": false,
+          "description": "Number of records per page."
+        }
       }
     },
     "GetProject": {
@@ -418,12 +418,12 @@
       "summary": "Get Project details",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
         "project_id": {
           "location": "uri",
           "type": "integer",
@@ -438,12 +438,12 @@
       "summary": "Get project tasks for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
         "project_id": {
           "location": "uri",
           "type": "integer",
@@ -458,12 +458,12 @@
       "summary": "Update project for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Project ID"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
         "project_id": {
           "location": "uri",
           "type": "integer",
@@ -475,101 +475,101 @@
           "type": "object",
           "description": "Project Object",
           "properties": {
-						"location": "json",
-						"type": "object",
-						"description": "Project Object",
-						"properties": {
-							"name": {
-								"type": "string",
-								"required": true,
-								"description": "The name of the project (string, required, unique for client and workspace)"
-							},
-							"end_date": {
-								"type": "string",
-								"required": true,
-								"description": "End date of a project timeframe"
-							},
-							"start_date": {
-								"type": "string",
-								"required": true,
-								"description": "Start date of a project timeframe"
-							},
-							"active": {
-								"type": "boolean",
-								"required": false,
-								"default": true,
-								"description": "whether the project is archived or not (boolean, by default true)"
-							},
-							"auto_estimates": {
-								"type": "boolean",
-								"required": false,
-								"description": "Whether estimates are based on task hours, optional, premium feature"
-							},
-							"billable": {
-								"type": "boolean",
-								"required": false,
-								"default": true,
-								"description": "Whether the project is set as billable, optional, premium feature"
-							},
-							"client_id": {
-								"type": "integer",
-								"required": false,
-								"description": "Client ID (integer, not required)"
-							},
-							"cid": {
-								"type": "integer",
-								"required": false,
-								"description": "Client ID (legacy)"
-							},
-							"color": {
-								"type": "string",
-								"required": false,
-								"description": "Project color"
-							},
-							"currency": {
-								"type": "string",
-								"required": false,
-								"description": "Project currency, optional, premium feature"
-							},
-							"estimated_hours": {
-								"type": "integer",
-								"required": false,
-								"description": "Estimated hours, optional, premium feature"
-							},
-							"fixed_fee": {
-								"type": "number",
-								"required": false,
-								"description": "Project fixed fee, optional, premium feature"
-							},
-							"is_private": {
-								"type": "boolean",
-								"required": false,
-								"default": true,
-								"description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
-							},
-							"rate": {
-								"type": "number",
-								"required": false,
-								"description": "Hourly rate, optional, premium feature"
-							},
-							"rate_change_mode": {
-								"type": "string",
-								"required": false,
-								"description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
-							},
-							"template": {
-								"type": "boolean",
-								"required": false,
-								"default": false,
-								"description": "whether the project can be used as a template (boolean, not required)"
-							},
-							"template_id": {
-								"type": "integer",
-								"required": false,
-								"description": "id of the template project used on current project's creation"
-							}
-						}
-					}
+            "location": "json",
+            "type": "object",
+            "description": "Project Object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "The name of the project (string, required, unique for client and workspace)"
+              },
+              "end_date": {
+                "type": "string",
+                "required": true,
+                "description": "End date of a project timeframe"
+              },
+              "start_date": {
+                "type": "string",
+                "required": true,
+                "description": "Start date of a project timeframe"
+              },
+              "active": {
+                "type": "boolean",
+                "required": false,
+                "default": true,
+                "description": "whether the project is archived or not (boolean, by default true)"
+              },
+              "auto_estimates": {
+                "type": "boolean",
+                "required": false,
+                "description": "Whether estimates are based on task hours, optional, premium feature"
+              },
+              "billable": {
+                "type": "boolean",
+                "required": false,
+                "default": true,
+                "description": "Whether the project is set as billable, optional, premium feature"
+              },
+              "client_id": {
+                "type": "integer",
+                "required": false,
+                "description": "Client ID (integer, not required)"
+              },
+              "cid": {
+                "type": "integer",
+                "required": false,
+                "description": "Client ID (legacy)"
+              },
+              "color": {
+                "type": "string",
+                "required": false,
+                "description": "Project color"
+              },
+              "currency": {
+                "type": "string",
+                "required": false,
+                "description": "Project currency, optional, premium feature"
+              },
+              "estimated_hours": {
+                "type": "integer",
+                "required": false,
+                "description": "Estimated hours, optional, premium feature"
+              },
+              "fixed_fee": {
+                "type": "number",
+                "required": false,
+                "description": "Project fixed fee, optional, premium feature"
+              },
+              "is_private": {
+                "type": "boolean",
+                "required": false,
+                "default": true,
+                "description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
+              },
+              "rate": {
+                "type": "number",
+                "required": false,
+                "description": "Hourly rate, optional, premium feature"
+              },
+              "rate_change_mode": {
+                "type": "string",
+                "required": false,
+                "description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
+              },
+              "template": {
+                "type": "boolean",
+                "required": false,
+                "default": false,
+                "description": "whether the project can be used as a template (boolean, not required)"
+              },
+              "template_id": {
+                "type": "integer",
+                "required": false,
+                "description": "id of the template project used on current project's creation"
+              }
+            }
+          }
         }
       }
     },
@@ -579,12 +579,12 @@
       "summary": "Delete project for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Project ID"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
         "project_id": {
           "location": "uri",
           "type": "integer",
@@ -594,8 +594,8 @@
       }
     },
     "DeleteProjects": {
-			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
-			"httpMethod": "DELETE",
+      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
+      "httpMethod": "DELETE",
       "uri": "projects/{ids}",
       "summary": "Delete multiple Project",
       "responseModel": "getResponse",
@@ -620,18 +620,18 @@
           "required": true,
           "type": "integer"
         },
-				"project_ids": {
-					"location": "query",
-					"type": "string",
-					"description": "Numeric IDs of projects, comma-separated",
-					"required": false
-				},
-				"with_group_members": {
-					"location": "query",
-					"type": "boolean",
-					"description": "Include group members",
-					"required": false
-				}
+        "project_ids": {
+          "location": "query",
+          "type": "string",
+          "description": "Numeric IDs of projects, comma-separated",
+          "required": false
+        },
+        "with_group_members": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Include group members",
+          "required": false
+        }
       }
     },
     "CreateProjectUser": {
@@ -640,12 +640,12 @@
       "summary": "Include a project user for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"description": "Numeric ID of the workspace",
-					"required": true,
-					"type": "integer"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
         "project_user": {
           "location": "json",
           "type": "object",
@@ -687,12 +687,12 @@
       "summary": "Update Project User",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"description": "Numeric ID of the workspace",
-					"required": true,
-					"type": "integer"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
         "project_user_id": {
           "location": "uri",
           "type": "integer",
@@ -730,12 +730,12 @@
       "summary": "Delete Project User",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"description": "Numeric ID of the workspace",
-					"required": true,
-					"type": "integer"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
         "project_user_id": {
           "location": "uri",
           "type": "integer",
@@ -745,8 +745,8 @@
       }
     },
     "CreateProjectUsers": {
-			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#create-multiple-project-users-for-single-project but not in the v9 docs or the migration guide.",
-			"httpMethod": "POST",
+      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#create-multiple-project-users-for-single-project but not in the v9 docs or the migration guide.",
+      "httpMethod": "POST",
       "uri": "project_users",
       "summary": "Create multiple Project Users",
       "responseModel": "getResponse",
@@ -800,12 +800,12 @@
       "summary": "Patch a list of project users for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"description": "Numeric ID of the workspace",
-					"required": true,
-					"type": "integer"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
         "project_user_ids": {
           "location": "uri",
           "type": "string",
@@ -841,8 +841,8 @@
       }
     },
     "DeleteProjectUsers": {
-			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
-			"httpMethod": "DELETE",
+      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
+      "httpMethod": "DELETE",
       "uri": "project_users/{ids}",
       "summary": "Delete multiple Project Users",
       "responseModel": "getResponse",
@@ -1483,15 +1483,15 @@
     },
     "GetWorkspaceUsers": {
       "httpMethod": "GET",
-      "uri": "workspaces/{id}/users",
-      "summary": "Get workspace users",
+      "uri": "workspaces/{workspace_id}/users",
+      "summary": "List all users for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
-          "description": "Workspace ID",
+          "type": "integer",
           "required": true,
-          "type": "integer"
+          "description": "Numeric ID of the workspace"
         }
       }
     },
