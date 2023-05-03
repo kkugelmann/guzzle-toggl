@@ -1117,12 +1117,24 @@
 			}
     },
     "UpdateTasks": {
-      "httpMethod": "PUT",
-      "uri": "tasks/{ids}",
-      "summary": "Update Tasks",
+      "httpMethod": "PATCH",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_ids}",
+      "summary": "Update project tasks for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "ids": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+				"project_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the project"
+				},
+        "task_ids": {
           "location": "uri",
           "type": "string",
           "required": true,
