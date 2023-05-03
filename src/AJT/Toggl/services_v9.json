@@ -594,7 +594,8 @@
       }
     },
     "DeleteProjects": {
-      "httpMethod": "DELETE",
+			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
+			"httpMethod": "DELETE",
       "uri": "projects/{ids}",
       "summary": "Delete multiple Project",
       "responseModel": "getResponse",
