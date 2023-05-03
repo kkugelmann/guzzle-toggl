@@ -1280,7 +1280,7 @@
     },
     "GetCurrentTimeEntry": {
       "httpMethod": "GET",
-      "uri": "time_entries/current",
+      "uri": "me/time_entries/current",
       "summary": "Get Current Time Entry"
     },
     "UpdateTimeEntry": {
