@@ -1428,8 +1428,8 @@
     },
     "CreateUser": {
       "httpMethod": "POST",
-      "uri": "signups",
-      "summary": "Sign up new user",
+      "uri": "signup",
+      "summary": "Sign up as a new user.",
       "responseModel": "getResponse",
       "parameters": {
         "user": {
@@ -1437,25 +1437,87 @@
           "type": "object",
           "description": "User Object",
           "properties": {
+            "code": {
+              "type": "string",
+              "required": false,
+              "description": "The code you received from the OAuth authorization step. (string, required). Required if signing up via OAuth."
+            },
+            "country_id": {
+              "type": "integer",
+              "required": false,
+              "description": "User's country ID, if not provided will be United States"
+            },
+            "created_with": {
+              "type": "string",
+              "required": true,
+              "description": "Should describe the application/service that is using the API"
+            },
             "email": {
               "type": "string",
               "required": true,
               "description": "a valid email for the user whose account is created (string, required)"
+            },
+            "full_name": {
+              "type": "string",
+              "required": false,
+              "description": "User's full name, if not provided will be derived from the email address"
+            },
+            "google_access_token": {
+              "type": "string",
+              "required": false,
+              "description": "Legacy field"
+            },
+            "invitation_code": {
+              "type": "string",
+              "required": false,
+              "description": "Optional, used when creating account through an invitation"
             },
             "password": {
               "type": "string",
               "required": true,
               "description": "password at least 6 characters long (string, required)"
             },
+            "provider": {
+              "type": "string",
+              "required": false,
+              "description": "Required if signing up via OAuth"
+            },
             "timezone": {
               "type": "string",
               "required": true,
-              "description": "for example 'Etc/UTC' (string, required)"
+              "description": "User's timezone, if not provided will be UTC"
             },
-            "created_with": {
+            "token": {
               "type": "string",
+              "required": false,
+              "description": "Whether the Terms of Service have been accepted"
+            },
+            "tos_accepted": {
+              "type": "boolean",
+              "required": false,
+              "description": "Whether the Terms of Service have been accepted"
+            },
+            "workspace": {
+              "type": "object",
               "required": true,
-              "description": "in free form, name of the app that signed the user app (string, required)"
+              "description": "Optional workspace settings, used when creating account not through an invitation",
+              "properties": {
+                "initial_pricing_plan": {
+                  "type": "integer",
+                  "required": true,
+                  "description": "Plan ID for the new workspace"
+                },
+                "initial_trial": {
+                  "type": "boolean",
+                  "required": true,
+                  "description": "New workspace should be created with a trial subscription? (only for stage)"
+                },
+                "name": {
+                  "type": "string",
+                  "required": true,
+                  "description": "Workspace name, if not provided it will be based on the user's full name"
+                }
+              }
             }
           }
         }
