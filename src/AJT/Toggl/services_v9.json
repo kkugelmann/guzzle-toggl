@@ -1512,26 +1512,6 @@
         }
       }
     },
-    "GetWorkspaceTasks": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{id}/tasks",
-      "summary": "Get workspace tasks",
-      "responseModel": "getResponse",
-      "parameters": {
-        "id": {
-          "location": "uri",
-          "description": "Workspace ID",
-          "required": true,
-          "type": "integer"
-        },
-        "active": {
-          "location": "query",
-          "description": "possible values true/false/both. By default true. If false, only done tasks are returned.",
-          "type": "string",
-          "default": "true"
-        }
-      }
-    },
     "AcceptInvitation": {
       "httpMethod": "POST",
       "uri": "organizations/invitations/{invitation_code}/accept",
