@@ -163,6 +163,41 @@
 				}
 			}
 		},
+		"RestoreClient": {
+			"httpMethod": "POST",
+			"uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
+			"summary": "Restores client and all related or specified projects from the given workspace.",
+			"responseModel": "getResponse",
+			"parameters": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+				"client_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the client"
+				},
+				"projects": {
+					"required": false,
+					"location": "json",
+					"type": "array",
+					"description": "Array of project IDs to restore.",
+					"items": {
+						"type": "integer"
+					}
+				},
+				"restore_all_projects": {
+					"required": false,
+					"location": "json",
+					"type": "boolean",
+					"description": "Restore all projects."
+				}
+			}
+		},
     "GetClientProjects": {
       "httpMethod": "GET",
       "uri": "clients/{id}/projects",
