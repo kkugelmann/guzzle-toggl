@@ -1285,16 +1285,22 @@
     },
     "UpdateTimeEntry": {
       "httpMethod": "PUT",
-      "uri": "time_entries/{id}",
-      "summary": "Update Time Entry",
+      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
+      "summary": "Updates a workspace time entry.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Time Entry ID"
-        },
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+				"time_entry_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "TimeEntry ID."
+				},
         "time_entry": {
           "location": "json",
           "type": "object",
