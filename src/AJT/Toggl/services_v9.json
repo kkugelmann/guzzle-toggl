@@ -610,16 +610,28 @@
     },
     "GetProjectUsers": {
       "httpMethod": "GET",
-      "uri": "projects/{id}/project_users",
-      "summary": "Get project users",
+      "uri": "workspaces/{workspace_id}/project_users",
+      "summary": "List all projects users for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
-          "description": "Project ID",
+          "description": "Numeric ID of the workspace",
           "required": true,
           "type": "integer"
-        }
+        },
+				"project_ids": {
+					"location": "query",
+					"type": "string",
+					"description": "Numeric IDs of projects, comma-separated",
+					"required": false
+				},
+				"with_group_members": {
+					"location": "query",
+					"type": "boolean",
+					"description": "Include group members",
+					"required": false
+				}
       }
     },
     "CreateProjectUser": {
