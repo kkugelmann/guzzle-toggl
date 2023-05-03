@@ -1174,7 +1174,8 @@
       }
     },
     "DeleteTasks": {
-      "httpMethod": "DELETE",
+			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
+			"httpMethod": "DELETE",
       "uri": "tasks/{ids}",
       "summary": "Delete Tasks",
       "responseModel": "getResponse",
