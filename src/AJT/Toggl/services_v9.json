@@ -1415,8 +1415,16 @@
     "GetCurrentUser": {
       "httpMethod": "GET",
       "uri": "me",
-      "summary": "Get Get current user data",
-      "responseModel": "getResponse"
+      "summary": "Returns details for the current user.",
+      "responseModel": "getResponse",
+			"parameters": {
+				"with_related_data": {
+					"type": "boolean",
+					"location": "query",
+					"required": false,
+					"description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
+				}
+			}
     },
     "CreateUser": {
       "httpMethod": "POST",
