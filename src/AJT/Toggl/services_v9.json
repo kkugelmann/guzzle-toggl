@@ -902,15 +902,21 @@
     },
     "UpdateTag": {
       "httpMethod": "PUT",
-      "uri": "tags/{id}",
-      "summary": "Update Tag",
+      "uri": "workspaces/{workspace_id}/tags/{tag_id}",
+      "summary": "Update workspace tags.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Tag ID"
+          "description": "Numeric ID of the workspace"
+        },
+        "tag_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the tag"
         },
         "tag": {
           "location": "json",
@@ -921,6 +927,11 @@
               "type": "string",
               "required": true,
               "description": "The name of the tag (string, required, unique in workspace)"
+            },
+            "workspace_id": {
+              "type": "integer",
+              "required": true,
+              "description": "workspace ID, where the tag will be used (integer, required)"
             }
           }
         }
