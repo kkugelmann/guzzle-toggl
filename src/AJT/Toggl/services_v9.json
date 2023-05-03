@@ -745,7 +745,8 @@
       }
     },
     "CreateProjectUsers": {
-      "httpMethod": "POST",
+			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#create-multiple-project-users-for-single-project but not in the v9 docs or the migration guide.",
+			"httpMethod": "POST",
       "uri": "project_users",
       "summary": "Create multiple Project Users",
       "responseModel": "getResponse",
