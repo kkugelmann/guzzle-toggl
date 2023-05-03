@@ -1259,7 +1259,8 @@
       }
     },
     "StartTimeEntry": {
-      "httpMethod": "POST",
+			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md#start-a-time-entry but not in the v9 docs or the migration guide.",
+			"httpMethod": "POST",
       "uri": "time_entries/start",
       "summary": "Start Time Entry",
       "responseModel": "getResponse",
