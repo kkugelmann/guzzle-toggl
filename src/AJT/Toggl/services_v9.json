@@ -636,10 +636,16 @@
     },
     "CreateProjectUser": {
       "httpMethod": "POST",
-      "uri": "project_users",
-      "summary": "Create Project User",
+      "uri": "workspaces/{workspace_id}/project_users",
+      "summary": "Include a project user for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
+				"workspace_id": {
+					"location": "uri",
+					"description": "Numeric ID of the workspace",
+					"required": true,
+					"type": "integer"
+				},
         "project_user": {
           "location": "json",
           "type": "object",
@@ -654,11 +660,6 @@
               "type": "integer",
               "required": true,
               "description": "user ID, who is added to the project (integer, required)"
-            },
-            "wid": {
-              "type": "integer",
-              "required": false,
-              "description": "workspace ID, where the project belongs to (integer, not-required, project's workspace id is used)"
             },
             "manager": {
               "type": "boolean",
