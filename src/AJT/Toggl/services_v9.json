@@ -959,10 +959,22 @@
     },
     "CreateTask": {
       "httpMethod": "POST",
-      "uri": "tasks",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
       "summary": "Create Task",
       "responseModel": "getResponse",
       "parameters": {
+				"workspace_id": {
+					"location": "uri",
+					"description": "Numeric ID of the workspace",
+					"required": true,
+					"type": "integer"
+				},
+				"project_id": {
+					"location": "uri",
+					"description": "Numeric ID of the project",
+					"required": true,
+					"type": "integer"
+				},
         "task": {
           "location": "json",
           "type": "object",
@@ -977,11 +989,6 @@
               "type": "integer",
               "required": true,
               "description": "project ID for the task (integer, required)"
-            },
-            "wid": {
-              "type": "integer",
-              "required": false,
-              "description": "workspace ID, where the task will be saved (integer, project's workspace id is used when not supplied)"
             },
             "uid": {
               "type": "integer",
