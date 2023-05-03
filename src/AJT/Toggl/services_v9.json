@@ -871,10 +871,16 @@
     },
     "CreateTag": {
       "httpMethod": "POST",
-      "uri": "tags",
+      "uri": "workspaces/{workspace_id}/tags",
       "summary": "Create Tag",
       "responseModel": "getResponse",
       "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
         "tag": {
           "location": "json",
           "type": "object",
@@ -885,7 +891,7 @@
               "required": true,
               "description": "The name of the tag (string, required, unique in workspace)"
             },
-            "wid": {
+            "workspace_id": {
               "type": "integer",
               "required": true,
               "description": "workspace ID, where the tag will be used (integer, required)"
