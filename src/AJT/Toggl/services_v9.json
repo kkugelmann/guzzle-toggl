@@ -326,11 +326,11 @@
     },
     "GetProjects": {
       "httpMethod": "GET",
-      "uri": "workspaces/{id}/projects",
+      "uri": "workspaces/{workspace_id}/projects",
       "summary": "Get projects",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
           "description": "Workspace ID",
           "required": true,
@@ -338,10 +338,78 @@
         },
         "active": {
           "location": "query",
-          "description": "possible values true/false/both. By default true. If false, only archived projects are returned.",
           "type": "string",
+					"required": false,
+          "description": "possible values true/false/both. By default true. If false, only archived projects are returned.",
           "default": "true"
-        }
+        },
+				"since": {
+					"location": "query",
+					"type": "integer",
+					"required": false,
+					"description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
+				},
+				"billable": {
+					"location": "query",
+					"type": "boolean",
+					"required": false
+				},
+				"user_ids": {
+					"location": "query",
+					"type": "array",
+					"items": {
+						"type": "integer"
+					},
+					"required": false
+				},
+				"client_ids": {
+					"location": "query",
+					"type": "array",
+					"items": {
+						"type": "integer"
+					},
+					"required": false
+				},
+				"group_ids": {
+					"location": "query",
+					"type": "array",
+					"items": {
+						"type": "integer"
+					},
+					"required": false
+				},
+				"name": {
+					"location": "string",
+					"type": "string",
+					"required": true
+				},
+				"page": {
+					"location": "query",
+					"type": "integer",
+					"required": true
+				},
+				"sort_field": {
+					"location": "query",
+					"type": "string",
+					"required": true
+				},
+				"sort_order": {
+					"location": "query",
+					"type": "string",
+					"required": true
+				},
+				"only_templates": {
+					"location": "query",
+					"type": "boolean",
+					"required": true,
+					"default": false
+				},
+				"per_page": {
+					"location": "query",
+					"type": "integer",
+					"required": false,
+					"description": "Number of records per page."
+				}
       }
     },
     "GetProject": {
