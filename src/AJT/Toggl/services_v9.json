@@ -1199,7 +1199,6 @@
       "httpMethod": "GET",
       "uri": "workspaces",
       "summary": "Get workspaces",
-      "responseModel": "getResponse",
       "responseModel": "getResponse"
     },
     "GetWorkspaceUsers": {
