@@ -1452,20 +1452,6 @@
         }
       }
     },
-    "GetWorkspaceClients": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{id}/clients",
-      "summary": "Get workspace clients",
-      "responseModel": "getResponse",
-      "parameters": {
-        "id": {
-          "location": "uri",
-          "description": "Workspace ID",
-          "required": true,
-          "type": "integer"
-        }
-      }
-    },
     "GetWorkspaceTags": {
       "httpMethod": "GET",
       "uri": "workspaces/{id}/tags",
