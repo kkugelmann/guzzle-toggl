@@ -199,6 +199,7 @@
 			}
 		},
     "GetClientProjects": {
+			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
       "httpMethod": "GET",
       "uri": "clients/{id}/projects",
       "summary": "Get client projects",
