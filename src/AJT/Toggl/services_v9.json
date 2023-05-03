@@ -1278,20 +1278,6 @@
 				}
 			}
     },
-    "GetTimeEntry": {
-      "httpMethod": "GET",
-      "uri": "time_entries/{id}",
-      "summary": "Get Time Entry",
-      "responseModel": "getResponse",
-      "parameters": {
-        "id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Time Entry ID"
-        }
-      }
-    },
     "GetCurrentTimeEntry": {
       "httpMethod": "GET",
       "uri": "time_entries/current",
