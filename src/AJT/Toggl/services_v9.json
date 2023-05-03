@@ -1497,15 +1497,21 @@
     },
     "GetWorkspaceWorkspaceUsers": {
       "httpMethod": "GET",
-      "uri": "workspaces/{id}/workspace_users",
-      "summary": "Many-to-many middle object containing information about a specific user's access in the specific workspace",
+      "uri": "organizations/{organization_id}/workspaces/{workspace_id}/workspace_users",
+      "summary": "Returns any users who belong to the workspace directly or through at least one group.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "organization_id": {
           "location": "uri",
-          "description": "Workspace ID",
+          "type": "integer",
           "required": true,
-          "type": "integer"
+          "description": "Numeric ID of the organization"
+        },
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Workspace ID"
         }
       }
     },
