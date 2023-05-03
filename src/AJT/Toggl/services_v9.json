@@ -1012,17 +1012,29 @@
     },
     "GetTask": {
       "httpMethod": "GET",
-      "uri": "tasks/{id}",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
       "summary": "Get Task",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"description": "Numeric ID of the workspace",
+					"required": true,
+					"type": "integer"
+				},
+        "project_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Task ID"
-        }
-      }
+          "description": "Numeric ID of the project"
+        },
+				"task_id": {
+					"location": "uri",
+					"description": "Numeric ID of the task",
+					"required": true,
+					"type": "integer"
+				}
+			}
     },
     "UpdateTask": {
       "httpMethod": "PUT",
