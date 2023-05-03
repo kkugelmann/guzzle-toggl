@@ -1532,17 +1532,17 @@
         }
       }
     },
-    "InviteWorkspaceUser": {
+    "CreateUserInvitation": {
       "httpMethod": "POST",
-      "uri": "workspaces/{id}/invite",
-      "summary": "Invite User to Workspace",
+      "uri": "organizations/{organization_id}/invitations",
+      "summary": "Creates a new invitation for the user.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "organization_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Workspace ID"
+          "description": "Numeric ID of the organization."
         },
         "emails": {
           "location": "json",
@@ -1553,6 +1553,29 @@
             "type": "string",
             "required": true,
             "description": "The valid email of user who must be invite to this workspace (string, required)"
+          }
+        },
+        "workspaces": {
+          "location": "json",
+          "type": "array",
+          "required": true,
+          "description": "List of valid workspaces (array, required)",
+          "items": {
+            "type": "object",
+            "required": true,
+            "description": "The valid workspace of user who must be invite to this workspace (object, required)",
+            "properties": {
+              "admin": {
+                "type": "boolean",
+                "required": true,
+                "description": "If true, the invited user will be workspace admin (boolean, required)"
+              },
+              "workspace_id": {
+                "type": "integer",
+                "required": true,
+                "description": "Numeric ID of the workspace (integer, required)"
+              }
+            }
           }
         }
       }
