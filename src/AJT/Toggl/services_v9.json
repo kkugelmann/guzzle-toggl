@@ -1605,7 +1605,7 @@
     },
     "DeleteWorkspaceUser": {
       "httpMethod": "DELETE",
-      "uri": "/workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
       "summary": "Removes user from workspace",
       "responseModel": "getResponse",
       "parameters": {
