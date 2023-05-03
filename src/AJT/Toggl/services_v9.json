@@ -6,10 +6,16 @@
   "operations": {
     "CreateClient": {
       "httpMethod": "POST",
-      "uri": "clients",
+      "uri": "workspaces/{workspace_id}/clients",
       "summary": "Create Client",
       "responseModel": "getResponse",
       "parameters": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
         "client": {
           "location": "json",
           "type": "object",
