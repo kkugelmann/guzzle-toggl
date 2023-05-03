@@ -1463,15 +1463,15 @@
     },
     "GetGroups": {
       "httpMethod": "GET",
-      "uri": "workspaces/{id}/groups",
-      "summary": "Get groups",
+      "uri": "organizations/{organization_id}/groups",
+      "summary": "Returns list of groups in organization based on set of url parameters. List is sorted by name.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "organization_id": {
           "location": "uri",
-          "description": "Workspace ID",
+          "type": "integer",
           "required": true,
-          "type": "integer"
+          "description": "Numeric ID of the organization"
         }
       }
     },
