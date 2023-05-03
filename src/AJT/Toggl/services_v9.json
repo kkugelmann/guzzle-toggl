@@ -46,17 +46,23 @@
     },
     "GetClient": {
       "httpMethod": "GET",
-      "uri": "clients/{id}",
-      "summary": "Get Client Details",
+      "uri": "workspaces/{workspace_id}/clients/{client_id}",
+      "summary": "Load client from workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+        "client_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Client ID"
+          "description": "Numeric ID of the client"
         }
-      }
+			}
     },
     "UpdateClient": {
       "httpMethod": "PUT",
