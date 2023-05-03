@@ -66,15 +66,21 @@
     },
     "UpdateClient": {
       "httpMethod": "PUT",
-      "uri": "clients/{id}",
-      "summary": "Update Client",
+      "uri": "workspaces/{workspace_id}/clients/{client_id}",
+      "summary": "Update workspace client.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
+        "client_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Client ID"
+          "description": "Numeric ID of the client"
         },
         "client": {
           "location": "json",
