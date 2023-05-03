@@ -1539,8 +1539,8 @@
     },
     "GetWorkspaces": {
       "httpMethod": "GET",
-      "uri": "workspaces",
-      "summary": "Get workspaces",
+      "uri": "me/workspaces",
+      "summary": "Lists workspaces for given user.",
       "responseModel": "getResponse"
     },
     "GetWorkspaceUsers": {
