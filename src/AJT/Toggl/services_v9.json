@@ -1190,10 +1190,16 @@
     },
     "CreateTimeEntry": {
       "httpMethod": "POST",
-      "uri": "time_entries",
-      "summary": "Create Time Entry",
+      "uri": "workspaces/{workspace_id}/time_entries",
+      "summary": "Creates a new workspace TimeEntry.",
       "responseModel": "getResponse",
       "parameters": {
+				"workspace_id": {
+					"location": "uri",
+					"type": "integer",
+					"required": true,
+					"description": "Numeric ID of the workspace"
+				},
         "time_entry": {
           "location": "json",
           "type": "object",
@@ -1203,11 +1209,6 @@
               "type": "string",
               "required": false,
               "description": "(string, not required)"
-            },
-            "wid": {
-              "type": "integer",
-              "required": false,
-              "description": "workspace ID (integer, required if pid or tid not supplied)"
             },
             "pid": {
               "type": "integer",
