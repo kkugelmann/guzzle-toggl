@@ -138,61 +138,61 @@
       "summary": "Get clients visible to user",
       "responseModel": "getResponse"
     },
-		"ArchiveClient": {
-			"httpMethod": "POST",
-			"uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
-			"summary": "Archives a workspace client and related projects. Only for premium workspaces.",
-			"responseModel": "getResponse",
-			"parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-				"client_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the client"
-				}
-			}
-		},
-		"RestoreClient": {
-			"httpMethod": "POST",
-			"uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
-			"summary": "Restores client and all related or specified projects from the given workspace.",
-			"responseModel": "getResponse",
-			"parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-				"client_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the client"
-				},
-				"projects": {
-					"required": false,
-					"location": "json",
-					"type": "array",
-					"description": "Array of project IDs to restore.",
-					"items": {
-						"type": "integer"
-					}
-				},
-				"restore_all_projects": {
-					"required": false,
-					"location": "json",
-					"type": "boolean",
-					"description": "Restore all projects."
-				}
-			}
-		},
+    "ArchiveClient": {
+        "httpMethod": "POST",
+        "uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
+        "summary": "Archives a workspace client and related projects. Only for premium workspaces.",
+        "responseModel": "getResponse",
+        "parameters": {
+            "workspace_id": {
+                "location": "uri",
+                "type": "integer",
+                "required": true,
+                "description": "Numeric ID of the workspace"
+            },
+            "client_id": {
+                "location": "uri",
+                "type": "integer",
+                "required": true,
+                "description": "Numeric ID of the client"
+            }
+        }
+    },
+    "RestoreClient": {
+        "httpMethod": "POST",
+        "uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
+        "summary": "Restores client and all related or specified projects from the given workspace.",
+        "responseModel": "getResponse",
+        "parameters": {
+            "workspace_id": {
+                "location": "uri",
+                "type": "integer",
+                "required": true,
+                "description": "Numeric ID of the workspace"
+            },
+            "client_id": {
+                "location": "uri",
+                "type": "integer",
+                "required": true,
+                "description": "Numeric ID of the client"
+            },
+            "projects": {
+                "required": false,
+                "location": "json",
+                "type": "array",
+                "description": "Array of project IDs to restore.",
+                "items": {
+                    "type": "integer"
+                }
+            },
+            "restore_all_projects": {
+                "required": false,
+                "location": "json",
+                "type": "boolean",
+                "description": "Restore all projects."
+            }
+        }
+    },
     "GetClientProjects": {
 			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
       "httpMethod": "GET",
@@ -855,6 +855,20 @@
         }
       }
     },
+    "GetTags": {
+      "httpMethod": "GET",
+      "uri": "workspaces/{workspace_id}/tags",
+      "summary": "List Workspace tags.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
     "CreateTag": {
       "httpMethod": "POST",
       "uri": "tags",
@@ -1442,20 +1456,6 @@
       "httpMethod": "GET",
       "uri": "workspaces/{id}/workspace_users",
       "summary": "Many-to-many middle object containing information about a specific user's access in the specific workspace",
-      "responseModel": "getResponse",
-      "parameters": {
-        "id": {
-          "location": "uri",
-          "description": "Workspace ID",
-          "required": true,
-          "type": "integer"
-        }
-      }
-    },
-    "GetWorkspaceTags": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{id}/tags",
-      "summary": "Get workspace tags",
       "responseModel": "getResponse",
       "parameters": {
         "id": {
