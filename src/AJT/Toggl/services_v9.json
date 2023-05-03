@@ -1532,6 +1532,34 @@
         }
       }
     },
+    "AcceptInvitation": {
+      "httpMethod": "POST",
+      "uri": "organizations/invitations/{invitation_code}/accept",
+      "summary": "User connected with invitation is marked as joined, email is sent to the inviter.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "invitation_code": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Invitation code"
+        }
+      }
+    },
+    "RejectInvitation": {
+      "httpMethod": "POST",
+      "uri": "organizations/invitations/{invitation_code}/reject",
+      "summary": "User connected with invitation is marked as deleted.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "invitation_code": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Invitation code"
+        }
+      }
+    },
     "CreateUserInvitation": {
       "httpMethod": "POST",
       "uri": "organizations/{organization_id}/invitations",
@@ -1577,6 +1605,26 @@
               }
             }
           }
+        }
+      }
+    },
+    "ResendInvitation": {
+      "httpMethod": "PUT",
+      "uri": "organizations/{organization_id}/invitations/{invitation_code}/resend\n",
+      "summary": "Resend invitation email to user.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "organization_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Organization ID"
+        },
+        "invitation_code": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Invitation code"
         }
       }
     },
