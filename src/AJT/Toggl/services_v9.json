@@ -795,12 +795,18 @@
       }
     },
     "UpdateProjectUsers": {
-      "httpMethod": "PUT",
-      "uri": "project_users/{ids}",
-      "summary": "Update multiple Project User",
+      "httpMethod": "PATCH",
+      "uri": "workspaces/{workspace_id}/project_users/{project_user_ids}\n\n",
+      "summary": "Patch a list of project users for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "ids": {
+				"workspace_id": {
+					"location": "uri",
+					"description": "Numeric ID of the workspace",
+					"required": true,
+					"type": "integer"
+				},
+        "project_user_ids": {
           "location": "uri",
           "type": "string",
           "required": true,
