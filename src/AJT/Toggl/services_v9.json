@@ -459,102 +459,129 @@
           "location": "json",
           "type": "object",
           "description": "Project Object",
-          "properties": {
-            "location": "json",
-            "type": "object",
-            "description": "Project Object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "required": true,
-                "description": "The name of the project (string, required, unique for client and workspace)"
-              },
-              "end_date": {
-                "type": "string",
-                "required": true,
-                "description": "End date of a project timeframe"
-              },
-              "start_date": {
-                "type": "string",
-                "required": true,
-                "description": "Start date of a project timeframe"
-              },
-              "active": {
-                "type": "boolean",
-                "required": false,
-                "default": true,
-                "description": "whether the project is archived or not (boolean, by default true)"
-              },
-              "auto_estimates": {
-                "type": "boolean",
-                "required": false,
-                "description": "Whether estimates are based on task hours, optional, premium feature"
-              },
-              "billable": {
-                "type": "boolean",
-                "required": false,
-                "default": true,
-                "description": "Whether the project is set as billable, optional, premium feature"
-              },
-              "client_id": {
-                "type": "integer",
-                "required": false,
-                "description": "Client ID (integer, not required)"
-              },
-              "cid": {
-                "type": "integer",
-                "required": false,
-                "description": "Client ID (legacy)"
-              },
-              "color": {
-                "type": "string",
-                "required": false,
-                "description": "Project color"
-              },
-              "currency": {
-                "type": "string",
-                "required": false,
-                "description": "Project currency, optional, premium feature"
-              },
-              "estimated_hours": {
-                "type": "integer",
-                "required": false,
-                "description": "Estimated hours, optional, premium feature"
-              },
-              "fixed_fee": {
-                "type": "number",
-                "required": false,
-                "description": "Project fixed fee, optional, premium feature"
-              },
-              "is_private": {
-                "type": "boolean",
-                "required": false,
-                "default": true,
-                "description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
-              },
-              "rate": {
-                "type": "number",
-                "required": false,
-                "description": "Hourly rate, optional, premium feature"
-              },
-              "rate_change_mode": {
-                "type": "string",
-                "required": false,
-                "description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
-              },
-              "template": {
-                "type": "boolean",
-                "required": false,
-                "default": false,
-                "description": "whether the project can be used as a template (boolean, not required)"
-              },
-              "template_id": {
-                "type": "integer",
-                "required": false,
-                "description": "id of the template project used on current project's creation"
-              }
-            }
-          }
+					"properties": {
+						"active": {
+							"type": "boolean",
+							"required": false,
+							"default": true,
+							"description": "Whether the project is active or archived (boolean, by default true)"
+						},
+						"auto_estimates": {
+							"type": "boolean",
+							"required": false,
+							"description": "Whether estimates are based on task hours, optional, premium feature"
+						},
+						"billable": {
+							"type": "boolean",
+							"required": false,
+							"default": true,
+							"description": "Whether the project is set as billable, optional, premium feature"
+						},
+						"cid": {
+							"type": "integer",
+							"required": false,
+							"description": "Client ID (legacy)"
+						},
+						"client_id": {
+							"type": "integer",
+							"required": false,
+							"description": "Client ID (integer, not required)"
+						},
+						"client_name": {
+							"type": "string",
+							"required": false,
+							"description": "Client name, optional"
+						},
+						"color": {
+							"type": "string",
+							"required": false,
+							"description": "Project color"
+						},
+						"currency": {
+							"type": "string",
+							"required": false,
+							"description": "Project currency, optional, premium feature"
+						},
+						"end_date": {
+							"type": "string",
+							"required": false,
+							"description": "End date of a project timeframe"
+						},
+						"estimated_hours": {
+							"type": "integer",
+							"required": false,
+							"description": "Estimated hours, optional, premium feature"
+						},
+						"fixed_fee": {
+							"type": "number",
+							"required": false,
+							"description": "Project fixed fee, optional, premium feature"
+						},
+						"is_private": {
+							"type": "boolean",
+							"required": false,
+							"default": true,
+							"description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
+						},
+						"name": {
+							"type": "string",
+							"required": false,
+							"description": "The name of the project (string, required, unique for client and workspace)"
+						},
+						"rate": {
+							"type": "number",
+							"required": false,
+							"description": "Hourly rate, optional, premium feature"
+						},
+						"rate_change_mode": {
+							"type": "string",
+							"required": false,
+							"description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
+						},
+						"recurring": {
+							"type": "boolean",
+							"required": false,
+							"description": "Project is recurring, optional, premium feature"
+						},
+						"recurring_parameters": {
+							"type": "object",
+							"required": false,
+							"description": "Project recurring parameters, optional, premium feature",
+							"properties": {
+								"custom_period": {
+									"type": "integer",
+									"required": false,
+									"description": "Recurring custom period, the \"period\" field must be \"custom\""
+								},
+								"period": {
+									"type": "string",
+									"required": false,
+									"description": "Recurring period, example \"monthly\""
+								},
+								"project_start_date": {
+									"type": "string",
+									"required": false,
+									"description": "Recurring start date"
+								}
+							}
+						},
+						"start_date": {
+							"type": "string",
+							"required": false,
+							"description": "Start date of a project timeframe"
+						},
+						"template": {
+							"type": "boolean",
+							"required": false,
+							"default": false,
+							"description": "whether the project can be used as a template (boolean, not required)"
+						},
+						"template_id": {
+							"type": "integer",
+							"required": false,
+							"description": "id of the template project used on current project's creation"
+						}
+					}
         }
       }
     },
