@@ -459,7 +459,6 @@
 					"location": "json",
 					"type": "boolean",
 					"required": false,
-					"default": true,
 					"description": "Whether the project is active or archived (boolean, by default true)"
 				},
 				"auto_estimates": {
@@ -472,7 +471,6 @@
 					"location": "json",
 					"type": "boolean",
 					"required": false,
-					"default": true,
 					"description": "Whether the project is set as billable, optional, premium feature"
 				},
 				"cid": {
@@ -527,7 +525,6 @@
 					"location": "json",
 					"type": "boolean",
 					"required": false,
-					"default": true,
 					"description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
 				},
 				"name": {
@@ -587,7 +584,6 @@
 					"location": "json",
 					"type": "boolean",
 					"required": false,
-					"default": false,
 					"description": "whether the project can be used as a template (boolean, not required)"
 				},
 				"template_id": {
