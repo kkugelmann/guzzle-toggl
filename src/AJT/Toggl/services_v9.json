@@ -291,7 +291,7 @@
         "end_date": {
           "location": "json",
           "type": "string",
-          "required": true,
+          "required": false,
           "description": "End date of a project timeframe"
         },
         "estimated_hours": {
@@ -363,7 +363,7 @@
         "start_date": {
           "location": "json",
           "type": "string",
-          "required": true,
+          "required": false,
           "description": "Start date of a project timeframe"
         },
         "template": {
