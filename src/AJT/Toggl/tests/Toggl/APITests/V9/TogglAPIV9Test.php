@@ -1,17 +1,15 @@
 <?php
 
-namespace AJT\Toggl\tests\Toggl\Tests;
+namespace AJT\Toggl\tests\Toggl\APITests\V9;
 
 use AJT\Toggl\TogglClient;
-use Exception;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Set up the following files to run this test:
- * - \apikey.php by copying \apikey-dist.php
- * - \phpunit.xml by copying \phpunit-dist.xml
+ * - \phpunit.xml by copying \phpunit-dist.xml and fill in the variables
  */
-class TogglClientV9Test extends TestCase
+class TogglAPIV9Test extends TestCase
 {
     private TogglClient $client;
 
@@ -40,7 +38,7 @@ class TogglClientV9Test extends TestCase
         ]);
         $this->assertSame('AAB Project', $updateResult['name']);
 
-        $deleteResult = @$this->client->deleteProject([
+        $deleteResult = $this->client->deleteProject([
             'workspace_id' => $workspace,
             'project_id' => $project['id'],
         ]);
@@ -49,11 +47,10 @@ class TogglClientV9Test extends TestCase
 
     protected function setUp(): void
     {
-        require __DIR__ . '/../../../../../../apikey.php';
+        global $toggl_api_version;
+        global $toggl_api_key;
 
-        if ($toggl_api_version !== 'v9') {
-            throw new Exception('This test is only for v9');
-        }
+        $toggl_api_version = 'v9';
 
         $this->client = TogglClient::factory([
             'api_key' => $toggl_api_key,

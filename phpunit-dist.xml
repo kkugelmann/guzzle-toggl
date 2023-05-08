@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit bootstrap="vendor/autoload.php" colors="true">
+<phpunit bootstrap="src/AJT/Toggl/tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="Toggl Client Test Suite">
-            <directory>./src/AJT/Toggl/tests/Toggl/Tests</directory>
+        <testsuite name="Toggl API Tests">
+            <directory>./src/AJT/Toggl/tests/Toggl/Tests/APITests/V9</directory>
+        </testsuite>
+        <testsuite name="Toggl Client Tests">
+            <directory>./src/AJT/Toggl/tests/Toggl/Tests/ClientTests</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <var name="toggl_api_key" value="" />
+        <var name="toggle_api_reporting_version" value="v2" />
+
+        <var name="username" value="mail@example.com" />
+        <var name="password" value="p4ssw0rd" />
+
+        <ini name="display_errors" value="On" />
+        <ini name="display_startup_errors" value="On" />
+    </php>
 </phpunit>
