@@ -12,38 +12,7 @@ use PHPUnit\Framework\TestCase;
 class TogglAPIV9Test extends TestCase
 {
     private TogglClient $client;
-
-    public function testProject_create_get_update_delete(): void
-    {
-        $workspaces = $this->client->getWorkspaces();
-        $workspace = $workspaces[0]['id'];
-
-        $project = $this->client->createProject([
-            'workspace_id' => $workspace,
-            'active' => true,
-            'name' => 'AAA Project',
-        ]);
-
-        $projectGet = $this->client->getProject([
-            'workspace_id' => $workspace,
-            'project_id' => $project['id'],
-        ]);
-        $this->assertSame($project['id'], $projectGet['id']);
-
-        $this->assertSame(true, $project['is_private']);
-        $updateResult = $this->client->updateProject([
-            'workspace_id' => $workspace,
-            'project_id' => $project['id'],
-            'name' => 'AAB Project',
-        ]);
-        $this->assertSame('AAB Project', $updateResult['name']);
-
-        $deleteResult = $this->client->deleteProject([
-            'workspace_id' => $workspace,
-            'project_id' => $project['id'],
-        ]);
-        $this->assertEmpty($deleteResult);
-    }
+    private int $workspaceId;
 
     protected function setUp(): void
     {
@@ -55,6 +24,37 @@ class TogglAPIV9Test extends TestCase
         $this->client = TogglClient::factory([
             'api_key' => $toggl_api_key,
         ]);
+        $workspaces = $this->client->getWorkspaces();
+        $this->workspaceId = $workspaces[0]['id'];
+    }
+
+    public function testProject_create_get_update_delete(): void
+    {
+        $project = $this->client->createProject([
+            'workspace_id' => $this->workspaceId,
+            'active' => true,
+            'name' => 'AAA Project',
+        ]);
+
+        $projectGet = $this->client->getProject([
+            'workspace_id' => $this->workspaceId,
+            'project_id' => $project['id'],
+        ]);
+        $this->assertSame($project['name'], $projectGet['name']);
+
+        $this->assertSame(true, $project['is_private']);
+        $updateResult = $this->client->updateProject([
+            'workspace_id' => $this->workspaceId,
+            'project_id' => $project['id'],
+            'name' => 'AAB Project',
+        ]);
+        $this->assertSame('AAB Project', $updateResult['name']);
+
+        $deleteResult = $this->client->deleteProject([
+            'workspace_id' => $this->workspaceId,
+            'project_id' => $project['id'],
+        ]);
+        $this->assertEmpty($deleteResult);
     }
 
 }

@@ -5,19 +5,19 @@
   "baseUri": "https://api.track.toggl.com/api/v9/",
   "operations": {
     "ListClients": {
-			"httpMethod": "GET",
-			"uri": "workspaces/{workspace_id}/clients",
-			"summary": "List clients from workspace.",
-			"responseModel": "getResponse",
-			"parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				}
-			}
-		},
+      "httpMethod": "GET",
+      "uri": "workspaces/{workspace_id}/clients",
+      "summary": "List clients from workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        }
+      }
+    },
     "CreateClient": {
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients",
