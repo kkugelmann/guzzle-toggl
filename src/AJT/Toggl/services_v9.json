@@ -30,32 +30,29 @@
           "required": true,
           "description": "Numeric ID of the workspace"
         },
-        "client": {
+        "name": {
           "location": "json",
-          "type": "object",
-          "description": "Client Object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": true,
-              "description": " The name of the client (string, required, unique in workspace)"
-            },
-            "notes": {
-              "type": "string",
-              "required": false,
-              "description": "Notes for the client (string, not required)"
-            },
-            "hrate": {
-              "type": "numeric",
-              "required": false,
-              "description": "The hourly rate for this client (float, not required, available only for pro workspaces)"
-            },
-            "cur": {
-              "type": "string",
-              "required": false,
-              "description": "The name of the client's currency (string, not required, available only for pro workspaces)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": " The name of the client (string, required, unique in workspace)"
+        },
+        "notes": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Notes for the client (string, not required)"
+        },
+        "hrate": {
+          "location": "json",
+          "type": "numeric",
+          "required": false,
+          "description": "The hourly rate for this client (float, not required, available only for pro workspaces)"
+        },
+        "cur": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "The name of the client's currency (string, not required, available only for pro workspaces)"
         }
       }
     },
@@ -97,32 +94,29 @@
           "required": true,
           "description": "Numeric ID of the client"
         },
-        "client": {
+        "name": {
           "location": "json",
-          "type": "object",
-          "description": "Client Object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": false,
-              "description": "The name of the client (string, not required, unique in workspace)"
-            },
-            "notes": {
-              "type": "string",
-              "required": false,
-              "description": "Notes for the client (string, not required)"
-            },
-            "hrate": {
-              "type": "numeric",
-              "required": false,
-              "description": "The hourly rate for this client (float, not required, available only for pro workspaces)"
-            },
-            "cur": {
-              "type": "string",
-              "required": false,
-              "description": "The name of the client's currency (string, not required, available only for pro workspaces)"
-            }
-          }
+          "type": "string",
+          "required": false,
+          "description": "The name of the client (string, not required, unique in workspace)"
+        },
+        "notes": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Notes for the client (string, not required)"
+        },
+        "hrate": {
+          "location": "json",
+          "type": "numeric",
+          "required": false,
+          "description": "The hourly rate for this client (float, not required, available only for pro workspaces)"
+        },
+        "cur": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "The name of the client's currency (string, not required, available only for pro workspaces)"
         }
       }
     },

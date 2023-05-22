@@ -57,4 +57,39 @@ class TogglAPIV9Test extends TestCase
         $this->assertEmpty($deleteResult);
     }
 
+    public function testClient_create_get_update_delete(): void
+    {
+        $client = [];
+        $client['name'] = 'AAA Client';
+        $client['notes'] = 'AAA Client Notes';
+
+        $clientCreate = $this->client->createClient([
+            'workspace_id' => $this->workspaceId,
+            ...$client,
+        ]);
+
+        $clientGet = $this->client->getClient([
+            'workspace_id' => $this->workspaceId,
+            'client_id' => $clientCreate['id'],
+        ]);
+
+        $this->assertSame($client['name'], $clientGet['name']);
+
+        $client['name'] = 'AAB Client';
+        $client['notes'] = 'AAB Client Notes';
+        $clientUpdate = $this->client->updateClient([
+            'workspace_id' => $this->workspaceId,
+            'client_id' => $clientCreate['id'],
+            ...$client,
+        ]);
+
+        $this->assertSame($client['name'], $clientUpdate['name']);
+
+        $deleteResult = $this->client->deleteClient([
+            'workspace_id' => $this->workspaceId,
+            'client_id' => $clientCreate['id'],
+        ]);
+        $this->assertEmpty($deleteResult);
+    }
+
 }
