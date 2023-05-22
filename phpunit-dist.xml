@@ -14,9 +14,6 @@
         <var name="toggl_api_key" value="" />
         <var name="toggle_api_reporting_version" value="v2" />
 
-        <var name="username" value="mail@example.com" />
-        <var name="password" value="p4ssw0rd" />
-
         <ini name="display_errors" value="On" />
         <ini name="display_startup_errors" value="On" />
     </php>
