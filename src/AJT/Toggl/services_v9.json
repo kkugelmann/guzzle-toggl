@@ -506,143 +506,143 @@
           "required": true,
           "description": "Project ID"
         },
-				"active": {
-					"location": "json",
-					"type": "boolean",
-					"required": false,
-					"description": "Whether the project is active or archived (boolean, by default true)"
-				},
-				"auto_estimates": {
-					"location": "json",
-					"type": "boolean",
-					"required": false,
-					"description": "Whether estimates are based on task hours, optional, premium feature"
-				},
-				"billable": {
-					"location": "json",
-					"type": "boolean",
-					"required": false,
-					"description": "Whether the project is set as billable, optional, premium feature"
-				},
-				"cid": {
-					"location": "json",
-					"type": "integer",
-					"required": false,
-					"description": "Client ID (legacy)"
-				},
-				"client_id": {
-					"location": "json",
-					"type": "integer",
-					"required": false,
-					"description": "Client ID (integer, not required)"
-				},
-				"client_name": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "Client name, optional"
-				},
-				"color": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "Project color"
-				},
-				"currency": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "Project currency, optional, premium feature"
-				},
-				"end_date": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "End date of a project timeframe"
-				},
-				"estimated_hours": {
-					"location": "json",
-					"type": "integer",
-					"required": false,
-					"description": "Estimated hours, optional, premium feature"
-				},
-				"fixed_fee": {
-					"location": "json",
-					"type": "number",
-					"required": false,
-					"description": "Project fixed fee, optional, premium feature"
-				},
-				"is_private": {
-					"location": "json",
-					"type": "boolean",
-					"required": false,
-					"description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
-				},
-				"name": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "The name of the project (string, required, unique for client and workspace)"
-				},
-				"rate": {
-					"location": "json",
-					"type": "number",
-					"required": false,
-					"description": "Hourly rate, optional, premium feature"
-				},
-				"rate_change_mode": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
-				},
-				"recurring": {
-					"location": "json",
-					"type": "boolean",
-					"required": false,
-					"description": "Project is recurring, optional, premium feature"
-				},
-				"recurring_parameters": {
-					"location": "json",
-					"type": "object",
-					"required": false,
-					"description": "Project recurring parameters, optional, premium feature",
-					"properties": {
-						"custom_period": {
-							"type": "integer",
-							"required": false,
-							"description": "Recurring custom period, the \"period\" field must be \"custom\""
-						},
-						"period": {
-							"type": "string",
-							"required": false,
-							"description": "Recurring period, example \"monthly\""
-						},
-						"project_start_date": {
-							"type": "string",
-							"required": false,
-							"description": "Recurring start date"
-						}
-					}
-				},
-				"start_date": {
-					"location": "json",
-					"type": "string",
-					"required": false,
-					"description": "Start date of a project timeframe"
-				},
-				"template": {
-					"location": "json",
-					"type": "boolean",
-					"required": false,
-					"description": "whether the project can be used as a template (boolean, not required)"
-				},
-				"template_id": {
-					"location": "json",
-					"type": "integer",
-					"required": false,
-					"description": "id of the template project used on current project's creation"
-				}
+        "active": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the project is active or archived (boolean, by default true)"
+        },
+        "auto_estimates": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether estimates are based on task hours, optional, premium feature"
+        },
+        "billable": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the project is set as billable, optional, premium feature"
+        },
+        "cid": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "Client ID (legacy)"
+        },
+        "client_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "Client ID (integer, not required)"
+        },
+        "client_name": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Client name, optional"
+        },
+        "color": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Project color"
+        },
+        "currency": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Project currency, optional, premium feature"
+        },
+        "end_date": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "End date of a project timeframe"
+        },
+        "estimated_hours": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "Estimated hours, optional, premium feature"
+        },
+        "fixed_fee": {
+          "location": "json",
+          "type": "number",
+          "required": false,
+          "description": "Project fixed fee, optional, premium feature"
+        },
+        "is_private": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "whether project is accessible for only project users or for all workspace users (boolean, default true)"
+        },
+        "name": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "The name of the project (string, required, unique for client and workspace)"
+        },
+        "rate": {
+          "location": "json",
+          "type": "number",
+          "required": false,
+          "description": "Hourly rate, optional, premium feature"
+        },
+        "rate_change_mode": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Rate change mode, optional, premium feature. Can be \"start-today\", \"override-current\", \"override-all\""
+        },
+        "recurring": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "Project is recurring, optional, premium feature"
+        },
+        "recurring_parameters": {
+          "location": "json",
+          "type": "object",
+          "required": false,
+          "description": "Project recurring parameters, optional, premium feature",
+          "properties": {
+            "custom_period": {
+              "type": "integer",
+              "required": false,
+              "description": "Recurring custom period, the \"period\" field must be \"custom\""
+            },
+            "period": {
+              "type": "string",
+              "required": false,
+              "description": "Recurring period, example \"monthly\""
+            },
+            "project_start_date": {
+              "type": "string",
+              "required": false,
+              "description": "Recurring start date"
+            }
+          }
+        },
+        "start_date": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Start date of a project timeframe"
+        },
+        "template": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "whether the project can be used as a template (boolean, not required)"
+        },
+        "template_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "id of the template project used on current project's creation"
+        }
       }
     },
     "DeleteProject": {
@@ -716,38 +716,36 @@
           "required": true,
           "type": "integer"
         },
-        "project_user": {
+        "project_id": {
           "location": "json",
-          "type": "object",
-          "description": "Project User Object",
-          "properties": {
-            "pid": {
-              "type": "integer",
-              "required": true,
-              "description": "project ID (integer, required)"
-            },
-            "uid": {
-              "type": "integer",
-              "required": true,
-              "description": "user ID, who is added to the project (integer, required)"
-            },
-            "manager": {
-              "type": "boolean",
-              "required": false,
-              "default": false,
-              "description": "admin rights for this project (boolean, default false)"
-            },
-            "rate": {
-              "type": "numeric",
-              "required": false,
-              "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-            },
-            "fullname": {
-              "type": "string",
-              "required": false,
-              "description": "fullname: full name of the user, who is added to the project"
-            }
-          }
+          "type": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        "user_id": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "user ID, who is added to the project (integer, required)"
+        },
+        "labour_cost": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "Labour cost for this project user"
+        },
+        "manager": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "admin rights for this project (boolean, default false)"
+        },
+        "rate": {
+          "location": "json",
+          "type": "numeric",
+          "required": false,
+          "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
         }
       }
     },
@@ -769,28 +767,24 @@
           "required": true,
           "description": "Numeric ID of the project user"
         },
-        "project_user": {
+        "labour_cost": {
           "location": "json",
-          "type": "object",
-          "description": "Project User Object",
-          "properties": {
-            "manager": {
-              "type": "boolean",
-              "required": false,
-              "default": false,
-              "description": "admin rights for this project (boolean, default false)"
-            },
-            "rate": {
-              "type": "numeric",
-              "required": false,
-              "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-            },
-            "fullname": {
-              "type": "string",
-              "required": false,
-              "description": "fullname: full name of the user, who is added to the project"
-            }
-          }
+          "type": "integer",
+          "required": false,
+          "description": "Labour cost for this project user"
+        },
+        "manager": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "admin rights for this project (boolean, default false)"
+        },
+        "rate": {
+          "location": "json",
+          "type": "numeric",
+          "required": false,
+          "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
         }
       }
     },
@@ -811,56 +805,6 @@
           "type": "integer",
           "required": true,
           "description": "Numeric ID of the project user\n"
-        }
-      }
-    },
-    "CreateProjectUsers": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#create-multiple-project-users-for-single-project but not in the v9 docs or the migration guide.",
-      "httpMethod": "POST",
-      "uri": "project_users",
-      "summary": "Create multiple Project Users",
-      "responseModel": "getResponse",
-      "parameters": {
-        "project_user": {
-          "location": "json",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "Project User Object",
-            "properties": {
-              "pid": {
-                "type": "integer",
-                "required": true,
-                "description": "project ID (integer, required)"
-              },
-              "uid": {
-                "type": "integer",
-                "required": true,
-                "description": "user ID, who is added to the project (integer, required)"
-              },
-              "wid": {
-                "type": "integer",
-                "required": false,
-                "description": "workspace ID, where the project belongs to (integer, not-required, project's workspace id is used)"
-              },
-              "manager": {
-                "type": "boolean",
-                "required": false,
-                "default": false,
-                "description": "admin rights for this project (boolean, default false)"
-              },
-              "rate": {
-                "type": "numeric",
-                "required": false,
-                "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-              },
-              "fullname": {
-                "type": "string",
-                "required": false,
-                "description": "fullname: full name of the user, who is added to the project"
-              }
-            }
-          }
         }
       }
     },
@@ -899,11 +843,6 @@
                 "type": "numeric",
                 "required": false,
                 "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-              },
-              "fullname": {
-                "type": "string",
-                "required": false,
-                "description": "fullname: full name of the user, who is added to the project"
               }
             }
           }
@@ -951,22 +890,11 @@
           "required": true,
           "type": "integer"
         },
-        "tag": {
+        "name": {
           "location": "json",
-          "type": "object",
-          "description": "Tag Object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": true,
-              "description": "The name of the tag (string, required, unique in workspace)"
-            },
-            "workspace_id": {
-              "type": "integer",
-              "required": true,
-              "description": "workspace ID, where the tag will be used (integer, required)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag (string, required, unique in workspace)"
         }
       }
     },
@@ -988,22 +916,11 @@
           "required": true,
           "description": "Numeric ID of the tag"
         },
-        "tag": {
+        "name": {
           "location": "json",
-          "type": "object",
-          "description": "Tag Object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": true,
-              "description": "The name of the tag (string, required, unique in workspace)"
-            },
-            "workspace_id": {
-              "type": "integer",
-              "required": true,
-              "description": "workspace ID, where the tag will be used (integer, required)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag (string, required, unique in workspace)"
         }
       }
     },
@@ -1019,7 +936,7 @@
           "required": true,
           "description": "Numeric ID of the workspace"
         },
-        "id": {
+        "tag_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
@@ -1033,50 +950,42 @@
       "summary": "Create Task",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"description": "Numeric ID of the workspace",
-					"required": true,
-					"type": "integer"
-				},
-				"project_id": {
-					"location": "uri",
-					"description": "Numeric ID of the project",
-					"required": true,
-					"type": "integer"
-				},
-        "task": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "project_id": {
+          "location": "uri",
+          "description": "Numeric ID of the project",
+          "required": true,
+          "type": "integer"
+        },
+        "name": {
           "location": "json",
-          "type": "object",
-          "description": "Task Object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": true,
-              "description": "The name of the task (string, required, unique in project)"
-            },
-            "pid": {
-              "type": "integer",
-              "required": true,
-              "description": "project ID for the task (integer, required)"
-            },
-            "uid": {
-              "type": "integer",
-              "required": false,
-              "description": "user ID, to whom the task is assigned to (integer, not required)"
-            },
-            "estimated_seconds": {
-              "type": "integer",
-              "required": false,
-              "description": "estimated duration of task in seconds (integer, not required)"
-            },
-            "active": {
-              "type": "boolean",
-              "required": false,
-              "default": true,
-              "description": "whether the task is done or not (boolean, by default true)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "The name of the task (string, required, unique in project)"
+        },
+        "user_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "user ID, to whom the task is assigned to (integer, not required)"
+        },
+        "estimated_seconds": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "estimated duration of task in seconds (integer, not required)"
+        },
+        "active": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "whether the task is done or not (boolean, by default true)"
         }
       }
     },
@@ -1086,25 +995,25 @@
       "summary": "Get Task",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the workspace"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the workspace"
+        },
         "project_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
           "description": "Numeric ID of the project"
         },
-				"task_id": {
-					"location": "uri",
-					"description": "Numeric ID of the task",
-					"required": true,
-					"type": "integer"
-				}
-			}
+        "task_id": {
+          "location": "uri",
+          "description": "Numeric ID of the task",
+          "required": true,
+          "type": "integer"
+        }
+      }
     },
     "UpdateTask": {
       "httpMethod": "PUT",
@@ -1112,51 +1021,45 @@
       "summary": "Update project task for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the workspace"
-				},
-				"project_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the project"
-				},
-				"task_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the task"
-				},
-        "task": {
+        "workspace_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the workspace"
+        },
+        "project_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the project"
+        },
+        "task_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the task"
+        },
+        "name": {
           "location": "json",
-          "type": "object",
-          "description": "Task Object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "required": false,
-              "description": "The name of the task (string, not required, unique in project)"
-            },
-            "uid": {
-              "type": "integer",
-              "required": false,
-              "description": "user ID, to whom the task is assigned to (integer, not required)"
-            },
-            "estimated_seconds": {
-              "type": "integer",
-              "required": false,
-              "description": "estimated duration of task in seconds (integer, not required)"
-            },
-            "active": {
-              "type": "boolean",
-              "required": false,
-              "default": true,
-              "description": "whether the task is done or not (boolean, by default true)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "The name of the task (string, required, unique in project)"
+        },
+        "user_id": {
+          "type": "integer",
+          "required": false,
+          "description": "user ID, to whom the task is assigned to (integer, not required)"
+        },
+        "estimated_seconds": {
+          "type": "integer",
+          "required": false,
+          "description": "estimated duration of task in seconds (integer, not required)"
+        },
+        "active": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "whether the task is done or not (boolean, by default true)"
         }
       }
     },
@@ -1166,25 +1069,25 @@
       "summary": "Delete projects task for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the workspace"
-				},
-				"project_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the project"
-				},
-				"task_id": {
-					"location": "uri",
-					"required": true,
-					"type": "integer",
-					"description": "Numeric ID of the task"
-				}
-			}
+        "workspace_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the workspace"
+        },
+        "project_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the project"
+        },
+        "task_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the task"
+        }
+      }
     },
     "UpdateTasks": {
       "httpMethod": "PATCH",
@@ -1192,60 +1095,54 @@
       "summary": "Update project tasks for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-				"project_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the project"
-				},
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "project_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the project"
+        },
         "task_ids": {
           "location": "uri",
           "type": "string",
           "required": true,
           "description": "Comma-separated list of Task IDs"
         },
-        "task": {
+        "name": {
           "location": "json",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "Task Object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "required": false,
-                "description": "The name of the task (string, not required, unique in project)"
-              },
-              "uid": {
-                "type": "integer",
-                "required": false,
-                "description": "user ID, to whom the task is assigned to (integer, not required)"
-              },
-              "estimated_seconds": {
-                "type": "integer",
-                "required": false,
-                "description": "estimated duration of task in seconds (integer, not required)"
-              },
-              "active": {
-                "type": "boolean",
-                "required": false,
-                "default": true,
-                "description": "whether the task is done or not (boolean, by default true)"
-              }
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "The name of the task (string, required, unique in project)"
+        },
+        "user_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "user ID, to whom the task is assigned to (integer, not required)"
+        },
+        "estimated_seconds": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "estimated duration of task in seconds (integer, not required)"
+        },
+        "active": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "whether the task is done or not (boolean, by default true)"
         }
       }
     },
     "DeleteTasks": {
-			"_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
-			"httpMethod": "DELETE",
+      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
+      "httpMethod": "DELETE",
       "uri": "tasks/{ids}",
       "summary": "Delete Tasks",
       "responseModel": "getResponse",
@@ -1264,67 +1161,63 @@
       "summary": "Creates a new workspace TimeEntry.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-        "time_entry": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "created_with": {
           "location": "json",
-          "type": "object",
-          "description": "Time Entry Object",
-          "properties": {
-            "description": {
-              "type": "string",
-              "required": false,
-              "description": "(string, not required)"
-            },
-            "pid": {
-              "type": "integer",
-              "required": false,
-              "description": "pid: project ID (integer, not required)"
-            },
-            "tid": {
-              "type": "integer",
-              "required": false,
-              "description": "tid: task ID (integer, not required)"
-            },
-            "billable": {
-              "type": "boolean",
-              "required": false,
-              "default": false,
-              "description": "(boolean, not required, default false, available for pro workspaces)"
-            },
-            "created_with": {
-              "type": "string",
-              "required": true,
-              "description": "the name of your client app (string, required)"
-            },
-            "tags": {
-              "type": "array",
-              "required": false,
-              "items": {
-                "type": "string"
-              },
-              "description": "a list of tag names (array of strings, not required)"
-            },
-            "duration": {
-              "type": "integer",
-              "required": true,
-              "description": "duration of time entry (integer, required)"
-            },
-            "duronly": {
-              "type": "boolean",
-              "required": false,
-              "description": "should Toggl show the start and stop time of this time entry? (boolean, not required)"
-            },
-            "start": {
-              "type": "string",
-              "required": true,
-              "description": "start of time entry (string, required, ISO 8601 date and time)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "the name of your client app (string, required)"
+        },
+        "duration": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "duration of time entry (integer, required)"
+        },
+        "description": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "(string, not required)"
+        },
+        "project_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "pid: project ID (integer, not required)"
+        },
+        "task_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "tid: task ID (integer, not required)"
+        },
+        "billable": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "(boolean, not required, default false, available for pro workspaces)"
+        },
+        "tags": {
+          "location": "json",
+          "type": "array",
+          "required": false,
+          "items": {
+            "type": "string"
+          },
+          "description": "a list of tag names (array of strings, not required)"
+        },
+        "start": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "start of time entry (string, required, ISO 8601 date and time)"
         }
       }
     },
@@ -1334,19 +1227,19 @@
       "summary": "Stop Time Entry",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-				"time_entry_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "TimeEntry ID."
-				}
-			}
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "time_entry_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "TimeEntry ID."
+        }
+      }
     },
     "GetCurrentTimeEntry": {
       "httpMethod": "GET",
@@ -1359,78 +1252,69 @@
       "summary": "Updates a workspace time entry.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-				"time_entry_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "TimeEntry ID."
-				},
-        "time_entry": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "time_entry_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "TimeEntry ID."
+        },
+        "created_with": {
           "location": "json",
-          "type": "object",
-          "description": "Time Entry Object",
-          "properties": {
-            "description": {
-              "type": "string",
-              "required": false,
-              "description": "(string, not required)"
-            },
-            "wid": {
-              "type": "integer",
-              "required": false,
-              "description": "workspace ID (integer, required if pid or tid not supplied)"
-            },
-            "pid": {
-              "type": "integer",
-              "required": false,
-              "description": "pid: project ID (integer, not required)"
-            },
-            "tid": {
-              "type": "integer",
-              "required": false,
-              "description": "tid: task ID (integer, not required)"
-            },
-            "billable": {
-              "type": "boolean",
-              "required": false,
-              "default": false,
-              "description": "(boolean, not required, default false, available for pro workspaces)"
-            },
-            "created_with": {
-              "type": "string",
-              "required": false,
-              "description": "the name of your client app (string, not required)"
-            },
-            "tags": {
-              "type": "array",
-              "required": false,
-              "items": {
-                "type": "string"
-              },
-              "description": "a list of tag names (array of strings, not required)"
-            },
-            "duration": {
-              "type": "integer",
-              "required": false,
-              "description": "duration of time entry (integer, not required)"
-            },
-            "duronly": {
-              "type": "boolean",
-              "required": false,
-              "description": "should Toggl show the start and stop time of this time entry? (boolean, not required)"
-            },
-            "start": {
-              "type": "string",
-              "required": false,
-              "description": "start of time entry (string, not required, ISO 8601 date and time)"
-            }
-          }
+          "type": "string",
+          "required": true,
+          "description": "the name of your client app (string, required)"
+        },
+        "duration": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "duration of time entry (integer, required)"
+        },
+        "description": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "(string, not required)"
+        },
+        "project_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "pid: project ID (integer, not required)"
+        },
+        "task_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "tid: task ID (integer, not required)"
+        },
+        "billable": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "(boolean, not required, default false, available for pro workspaces)"
+        },
+        "tags": {
+          "location": "json",
+          "type": "array",
+          "required": false,
+          "items": {
+            "type": "string"
+          },
+          "description": "a list of tag names (array of strings, not required)"
+        },
+        "start": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "start of time entry (string, required, ISO 8601 date and time)"
         }
       }
     },
@@ -1440,19 +1324,19 @@
       "summary": "Deletes a workspace time entry.",
       "responseModel": "getResponse",
       "parameters": {
-				"workspace_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "Numeric ID of the workspace"
-				},
-				"time_entry_id": {
-					"location": "uri",
-					"type": "integer",
-					"required": true,
-					"description": "TimeEntry ID."
-				}
-			}
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "time_entry_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "TimeEntry ID."
+        }
+      }
     },
     "GetTimeEntries": {
       "httpMethod": "GET",
@@ -1460,40 +1344,40 @@
       "summary": "Get time entries started in a specific time range.If start_date and end_date are not specified, time entries started during the last 9 days are returned.",
       "responseModel": "getResponse",
       "parameters": {
-				"since": {
-					"type": "integer",
-					"location": "query",
-					"description": "Get entries modified since this date using UNIX timestamp, including deleted ones."
-				},
-				"before": {
-					"type": "string",
-					"location": "query",
-					"description": "Get entries with start time, before given date (YYYY-MM-DD) or with time in RFC3339 format."
-				},
-				"start_date": {
-					"type": "string",
-					"location": "query",
-					"description": "Get entries with start time, from start_date YYYY-MM-DD or with time in RFC3339 format. To be used with end_date."
-				},
-				"end_date": {
-					"type": "string",
-					"location": "query",
-					"description": "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 format. To be used with start_date."
-				}
-			}
+        "since": {
+          "location": "query",
+          "type": "integer",
+          "description": "Get entries modified since this date using UNIX timestamp, including deleted ones."
+        },
+        "before": {
+          "location": "query",
+          "type": "string",
+          "description": "Get entries with start time, before given date (YYYY-MM-DD) or with time in RFC3339 format."
+        },
+        "start_date": {
+          "location": "query",
+          "type": "string",
+          "description": "Get entries with start time, from start_date YYYY-MM-DD or with time in RFC3339 format. To be used with end_date."
+        },
+        "end_date": {
+          "location": "query",
+          "type": "string",
+          "description": "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 format. To be used with start_date."
+        }
+      }
     },
     "GetCurrentUser": {
       "httpMethod": "GET",
       "uri": "me",
       "summary": "Returns details for the current user.",
       "responseModel": "getResponse",
-			"parameters": {
-				"with_related_data": {
-					"type": "boolean",
-					"location": "query",
-					"description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
-				}
-			}
+      "parameters": {
+        "with_related_data": {
+          "type": "boolean",
+          "location": "query",
+          "description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
+        }
+      }
     },
     "CreateUser": {
       "httpMethod": "POST",
@@ -1501,92 +1385,98 @@
       "summary": "Sign up as a new user.",
       "responseModel": "getResponse",
       "parameters": {
-        "user": {
+        "code": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "The code you received from the OAuth authorization step. (string, required). Required if signing up via OAuth."
+        },
+        "country_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "User's country ID, if not provided will be United States"
+        },
+        "created_with": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "Should describe the application/service that is using the API"
+        },
+        "email": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "a valid email for the user whose account is created (string, required)"
+        },
+        "full_name": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "User's full name, if not provided will be derived from the email address"
+        },
+        "google_access_token": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Legacy field"
+        },
+        "invitation_code": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Optional, used when creating account through an invitation"
+        },
+        "password": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "password at least 6 characters long (string, required)"
+        },
+        "provider": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Required if signing up via OAuth"
+        },
+        "timezone": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "User's timezone, if not provided will be UTC"
+        },
+        "token": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Whether the Terms of Service have been accepted"
+        },
+        "tos_accepted": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the Terms of Service have been accepted"
+        },
+        "workspace": {
           "location": "json",
           "type": "object",
-          "description": "User Object",
+          "required": true,
+          "description": "Optional workspace settings, used when creating account not through an invitation",
           "properties": {
-            "code": {
-              "type": "string",
-              "required": false,
-              "description": "The code you received from the OAuth authorization step. (string, required). Required if signing up via OAuth."
-            },
-            "country_id": {
+            "initial_pricing_plan": {
               "type": "integer",
-              "required": false,
-              "description": "User's country ID, if not provided will be United States"
-            },
-            "created_with": {
-              "type": "string",
               "required": true,
-              "description": "Should describe the application/service that is using the API"
+              "description": "Plan ID for the new workspace"
             },
-            "email": {
-              "type": "string",
-              "required": true,
-              "description": "a valid email for the user whose account is created (string, required)"
-            },
-            "full_name": {
-              "type": "string",
-              "required": false,
-              "description": "User's full name, if not provided will be derived from the email address"
-            },
-            "google_access_token": {
-              "type": "string",
-              "required": false,
-              "description": "Legacy field"
-            },
-            "invitation_code": {
-              "type": "string",
-              "required": false,
-              "description": "Optional, used when creating account through an invitation"
-            },
-            "password": {
-              "type": "string",
-              "required": true,
-              "description": "password at least 6 characters long (string, required)"
-            },
-            "provider": {
-              "type": "string",
-              "required": false,
-              "description": "Required if signing up via OAuth"
-            },
-            "timezone": {
-              "type": "string",
-              "required": true,
-              "description": "User's timezone, if not provided will be UTC"
-            },
-            "token": {
-              "type": "string",
-              "required": false,
-              "description": "Whether the Terms of Service have been accepted"
-            },
-            "tos_accepted": {
+            "initial_trial": {
               "type": "boolean",
-              "required": false,
-              "description": "Whether the Terms of Service have been accepted"
-            },
-            "workspace": {
-              "type": "object",
               "required": true,
-              "description": "Optional workspace settings, used when creating account not through an invitation",
-              "properties": {
-                "initial_pricing_plan": {
-                  "type": "integer",
-                  "required": true,
-                  "description": "Plan ID for the new workspace"
-                },
-                "initial_trial": {
-                  "type": "boolean",
-                  "required": true,
-                  "description": "New workspace should be created with a trial subscription? (only for stage)"
-                },
-                "name": {
-                  "type": "string",
-                  "required": true,
-                  "description": "Workspace name, if not provided it will be based on the user's full name"
-                }
-              }
+              "description": "New workspace should be created with a trial subscription? (only for stage)"
+            },
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Workspace name, if not provided it will be based on the user's full name"
             }
           }
         }
@@ -1663,18 +1553,6 @@
           "type": "integer",
           "required": true,
           "description": "Numeric ID of the workspace user"
-        },
-        "workspace_user": {
-          "location": "json",
-          "type": "object",
-          "description": "Workspace User Object",
-          "properties": {
-            "admin": {
-              "type": "boolean",
-              "required": true,
-              "description": "if user is workspace admin (boolean)"
-            }
-          }
         }
       }
     },

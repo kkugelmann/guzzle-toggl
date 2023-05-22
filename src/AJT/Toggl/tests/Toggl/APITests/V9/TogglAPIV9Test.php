@@ -3,6 +3,7 @@
 namespace AJT\Toggl\tests\Toggl\APITests\V9;
 
 use AJT\Toggl\TogglClient;
+use GuzzleHttp\Command\Result;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -88,6 +89,38 @@ class TogglAPIV9Test extends TestCase
         $deleteResult = $this->client->deleteClient([
             'workspace_id' => $this->workspaceId,
             'client_id' => $clientCreate['id'],
+        ]);
+        $this->assertEmpty($deleteResult);
+    }
+
+    public function testTag_create_get_update_delete(): void
+    {
+        $tag = [];
+        $tag['name'] = 'AAA Tag';
+
+        $tagCreate = $this->client->createTag([
+            'workspace_id' => $this->workspaceId,
+            ...$tag,
+        ]);
+
+        $tagGet = $this->client->getTags([
+            'workspace_id' => $this->workspaceId,
+        ]);
+        $tagGet = array_map(fn($tag) => $tag['name'], $tagGet->toArray());
+        $this->assertContains($tag['name'], $tagGet);
+
+        $tag['name'] = 'AAB Tag';
+        $tagUpdate = $this->client->updateTag([
+            'workspace_id' => $this->workspaceId,
+            'tag_id' => $tagCreate['id'],
+            ...$tag,
+        ]);
+
+        $this->assertSame($tag['name'], $tagUpdate['name']);
+
+        $deleteResult = $this->client->deleteTag([
+            'workspace_id' => $this->workspaceId,
+            'tag_id' => $tagCreate['id'],
         ]);
         $this->assertEmpty($deleteResult);
     }
