@@ -3,7 +3,6 @@
 namespace AJT\Toggl\tests\Toggl\APITests\V9;
 
 use AJT\Toggl\TogglClient;
-use GuzzleHttp\Command\Result;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class TogglAPIV9Test extends TestCase
 {
     private TogglClient $client;
-    private int $workspaceId;
+    private int $workspace_id;
 
     protected function setUp(): void
     {
@@ -27,36 +26,36 @@ class TogglAPIV9Test extends TestCase
             'api_key' => $toggl_api_key,
         ]);
         $workspaces = $this->client->getWorkspaces();
-        $this->workspaceId = $workspaces[0]['id'];
+        $this->workspace_id = $workspaces[0]['id'];
     }
 
     public function testProject_create_get_update_delete(): void
     {
-        $project = $this->client->createProject([
-            'workspace_id' => $this->workspaceId,
+        $project_created = $this->client->createProject([
+            'workspace_id' => $this->workspace_id,
             'active' => true,
             'name' => 'AAA Project',
         ]);
 
-        $projectGet = $this->client->getProject([
-            'workspace_id' => $this->workspaceId,
-            'project_id' => $project['id'],
+        $project_got = $this->client->getProject([
+            'workspace_id' => $this->workspace_id,
+            'project_id' => $project_created['id'],
         ]);
-        $this->assertSame($project['name'], $projectGet['name']);
+        $this->assertSame($project_created['name'], $project_got['name']);
 
-        $this->assertSame(true, $project['is_private']);
-        $updateResult = $this->client->updateProject([
-            'workspace_id' => $this->workspaceId,
-            'project_id' => $project['id'],
+        $this->assertSame(true, $project_created['is_private']);
+        $update_result = $this->client->updateProject([
+            'workspace_id' => $this->workspace_id,
+            'project_id' => $project_created['id'],
             'name' => 'AAB Project',
         ]);
-        $this->assertSame('AAB Project', $updateResult['name']);
+        $this->assertSame('AAB Project', $update_result['name']);
 
-        $deleteResult = $this->client->deleteProject([
-            'workspace_id' => $this->workspaceId,
-            'project_id' => $project['id'],
+        $delete_result = $this->client->deleteProject([
+            'workspace_id' => $this->workspace_id,
+            'project_id' => $project_created['id'],
         ]);
-        $this->assertEmpty($deleteResult);
+        $this->assertEmpty($delete_result);
     }
 
     public function testClient_create_get_update_delete(): void
@@ -65,33 +64,33 @@ class TogglAPIV9Test extends TestCase
         $client['name'] = 'AAA Client';
         $client['notes'] = 'AAA Client Notes';
 
-        $clientCreate = $this->client->createClient([
-            'workspace_id' => $this->workspaceId,
+        $client_created = $this->client->createClient([
+            'workspace_id' => $this->workspace_id,
             ...$client,
         ]);
 
-        $clientGet = $this->client->getClient([
-            'workspace_id' => $this->workspaceId,
-            'client_id' => $clientCreate['id'],
+        $client_got = $this->client->getClient([
+            'workspace_id' => $this->workspace_id,
+            'client_id' => $client_created['id'],
         ]);
 
-        $this->assertSame($client['name'], $clientGet['name']);
+        $this->assertSame($client['name'], $client_got['name']);
 
         $client['name'] = 'AAB Client';
         $client['notes'] = 'AAB Client Notes';
-        $clientUpdate = $this->client->updateClient([
-            'workspace_id' => $this->workspaceId,
-            'client_id' => $clientCreate['id'],
+        $client_updated = $this->client->updateClient([
+            'workspace_id' => $this->workspace_id,
+            'client_id' => $client_created['id'],
             ...$client,
         ]);
 
-        $this->assertSame($client['name'], $clientUpdate['name']);
+        $this->assertSame($client['name'], $client_updated['name']);
 
-        $deleteResult = $this->client->deleteClient([
-            'workspace_id' => $this->workspaceId,
-            'client_id' => $clientCreate['id'],
+        $delete_result = $this->client->deleteClient([
+            'workspace_id' => $this->workspace_id,
+            'client_id' => $client_created['id'],
         ]);
-        $this->assertEmpty($deleteResult);
+        $this->assertEmpty($delete_result);
     }
 
     public function testTag_create_get_update_delete(): void
@@ -99,31 +98,31 @@ class TogglAPIV9Test extends TestCase
         $tag = [];
         $tag['name'] = 'AAA Tag';
 
-        $tagCreate = $this->client->createTag([
-            'workspace_id' => $this->workspaceId,
+        $tag_created = $this->client->createTag([
+            'workspace_id' => $this->workspace_id,
             ...$tag,
         ]);
 
-        $tagGet = $this->client->getTags([
-            'workspace_id' => $this->workspaceId,
+        $tag_got = $this->client->getTags([
+            'workspace_id' => $this->workspace_id,
         ]);
-        $tagGet = array_map(fn($tag) => $tag['name'], $tagGet->toArray());
-        $this->assertContains($tag['name'], $tagGet);
+        $tag_got = array_map(fn($tag) => $tag['name'], $tag_got->toArray());
+        $this->assertContains($tag['name'], $tag_got);
 
         $tag['name'] = 'AAB Tag';
-        $tagUpdate = $this->client->updateTag([
-            'workspace_id' => $this->workspaceId,
-            'tag_id' => $tagCreate['id'],
+        $tag_updated = $this->client->updateTag([
+            'workspace_id' => $this->workspace_id,
+            'tag_id' => $tag_created['id'],
             ...$tag,
         ]);
 
-        $this->assertSame($tag['name'], $tagUpdate['name']);
+        $this->assertSame($tag['name'], $tag_updated['name']);
 
-        $deleteResult = $this->client->deleteTag([
-            'workspace_id' => $this->workspaceId,
-            'tag_id' => $tagCreate['id'],
+        $delete_result = $this->client->deleteTag([
+            'workspace_id' => $this->workspace_id,
+            'tag_id' => $tag_created['id'],
         ]);
-        $this->assertEmpty($deleteResult);
+        $this->assertEmpty($delete_result);
     }
 
 }
