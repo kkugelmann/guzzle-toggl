@@ -29,10 +29,10 @@ class TogglAPIV9Test extends TestCase
         $this->workspace_id = $workspaces[0]['id'];
     }
 
-    public function testCurrentUser_get(): void
+    public function testMe_get_update(): void
     {
         // https://developers.track.toggl.com/docs/api/me#get-me
-        $me = $this->client->getCurrentUser();
+        $me = $this->client->getMe();
         global $toggl_api_key;
         $this->assertSame($toggl_api_key, $me['api_token']);
         $this->assertArrayNotHasKey('clients', $me);
@@ -41,7 +41,7 @@ class TogglAPIV9Test extends TestCase
         $this->assertArrayNotHasKey('workspaces', $me);
         $this->assertArrayNotHasKey('time_entries', $me);
 
-        $me_with_related_data = $this->client->getCurrentUser([
+        $me_with_related_data = $this->client->getMe([
             'with_related_data' => true,
         ]);
         $this->assertArrayHasKey('clients', $me_with_related_data);
@@ -51,14 +51,14 @@ class TogglAPIV9Test extends TestCase
         $this->assertArrayHasKey('time_entries', $me_with_related_data);
 
         // https://developers.track.toggl.com/docs/api/me#put-me
-        $me_updated = $this->client->updateCurrentUser([
+        $me_updated = $this->client->updateMe([
             'beginning_of_week' => $me['beginning_of_week'] === 1 ? 0 : 1,
             'country_id' => $me['country_id'] + 1,
             'email' => 'updated@email.com',
             'fullname' => $me['fullname'] . 'updated',
         ]);
         $this->assertSame($me['fullname'] . 'updated', $me_updated['fullname']);
-        $this->client->updateCurrentUser([
+        $this->client->updateMe([
             'beginning_of_week' => $me['beginning_of_week'],
             'country_id' => $me['country_id'],
             'email' => $me['email'],

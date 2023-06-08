@@ -4,7 +4,7 @@
   "description": "Toggl API v9",
   "baseUri": "https://api.track.toggl.com/api/v9/",
   "operations": {
-    "GetCurrentUser": {
+    "GetMe": {
       "httpMethod": "GET",
       "uri": "me",
       "summary": "Returns details for the current user.",
@@ -17,7 +17,21 @@
         }
       }
     },
-    "UpdateCurrentUser": {
+    "GetCurrentUser": {
+      "httpMethod": "GET",
+      "uri": "me",
+      "summary": "old version of GetMe",
+      "responseModel": "getResponse",
+      "deprecated": true,
+      "parameters": {
+        "with_related_data": {
+          "type": "boolean",
+          "location": "query",
+          "description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
+        }
+      }
+    },
+    "UpdateMe": {
       "httpMethod": "PUT",
       "uri": "me",
       "summary": "Updates details for the current user.",
