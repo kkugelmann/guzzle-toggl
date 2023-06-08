@@ -7,8 +7,9 @@ use GuzzleHttp\Command\Result;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Set up the following files to run this test:
- * - \phpunit.xml by copying \phpunit-dist.xml and fill in the variables
+ * Set up the following file to run this test:
+ * \phpunit.xml by copying \phpunit-dist.xml and fill in the variables
+ *  - toggl_api_key: See https://www.toggl.com/public/api#api_token for more information on the api key
  */
 class TogglAPIV9Test extends TestCase
 {
