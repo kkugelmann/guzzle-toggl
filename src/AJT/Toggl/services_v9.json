@@ -79,6 +79,19 @@
         }
       }
     },
+    "GetClients": {
+      "httpMethod": "GET",
+      "uri": "me/clients",
+      "summary": "Get clients visible to user",
+      "responseModel": "getResponse",
+      "parameters": {
+        "since": {
+          "type": "integer",
+          "location": "query",
+          "description": "Retrieve clients created/modified/deleted since this date using UNIX timestamp."
+        }
+      }
+    },
     "ListClients": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients",
@@ -214,12 +227,6 @@
           "description": "Numeric ID of the client\n"
         }
       }
-    },
-    "GetClients": {
-      "httpMethod": "GET",
-      "uri": "me/clients",
-      "summary": "Get clients visible to user",
-      "responseModel": "getResponse"
     },
     "ArchiveClient": {
       "httpMethod": "POST",

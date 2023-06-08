@@ -66,6 +66,33 @@ class TogglAPIV9Test extends TestCase
         ]);
     }
 
+    public function testGetClients(): void
+    {
+        // https://developers.track.toggl.com/docs/api/me#get-clients
+        $new_clients = [
+            ['name' => 'AAA test client one'],
+            ['name' => 'AAA test client two'],
+            ['name' => 'AAA test client three'],
+        ];
+        $clients_created = [];
+        foreach ($new_clients as $new_client) {
+            $clients_created[] = $this->client->createClient([
+                'workspace_id' => $this->workspace_id,
+                'name' => $new_client['name'],
+            ])->toArray();
+        }
+
+        $clients_got = $this->client->getClients(['since' => time() - 1]);
+        $this->assertEquals($clients_created, $clients_got->toArray());
+
+        foreach ($clients_created as $client_created) {
+            @$this->client->deleteClient([
+                'workspace_id' => $this->workspace_id,
+                'client_id' => $client_created['id'],
+            ]);
+        }
+    }
+
     public function testProject_create_get_update_delete(): void
     {
         $project_created = $this->client->createProject([
