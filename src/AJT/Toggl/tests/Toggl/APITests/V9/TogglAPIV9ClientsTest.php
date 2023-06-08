@@ -13,6 +13,9 @@ class TogglAPIV9ClientsTest extends TogglAPIV9TestCase
 
     /**
      * https://developers.track.toggl.com/docs/api/clients#post-create-client
+     * https://developers.track.toggl.com/docs/api/clients#get-load-client-from-id
+     * https://developers.track.toggl.com/docs/api/clients#put-change-client
+     * https://developers.track.toggl.com/docs/api/clients#delete-delete-client
      */
     public function testClient_create_get_update_delete(): void
     {
@@ -48,18 +51,6 @@ class TogglAPIV9ClientsTest extends TogglAPIV9TestCase
         ]);
         $this->assertEmpty($delete_result);
     }
-
-    /**
-     * https://developers.track.toggl.com/docs/api/clients#get-load-client-from-id
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/clients#put-change-client
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/clients#delete-delete-client
-     */
 
     /**
      * https://developers.track.toggl.com/docs/api/clients#post-archives-client

@@ -9,6 +9,9 @@ class TogglAPIV9TagsTest extends TogglAPIV9TestCase
 {
     /**
      * https://developers.track.toggl.com/docs/api/tags#get-tags
+     * https://developers.track.toggl.com/docs/api/tags#post-create-tag
+     * https://developers.track.toggl.com/docs/api/tags#put-update-tag
+     * https://developers.track.toggl.com/docs/api/tags#delete-delete-tag
      */
     public function testTag_create_get_update_delete(): void
     {
@@ -41,17 +44,5 @@ class TogglAPIV9TagsTest extends TogglAPIV9TestCase
         ]);
         $this->assertEmpty($delete_result);
     }
-
-    /**
-     * https://developers.track.toggl.com/docs/api/tags#post-create-tag
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/tags#put-update-tag
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/tags#delete-delete-tag
-     */
 
 }

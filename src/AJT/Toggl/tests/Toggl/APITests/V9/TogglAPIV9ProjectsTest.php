@@ -30,6 +30,17 @@ class TogglAPIV9ProjectsTest extends TogglAPIV9TestCase
     /**
      * https://developers.track.toggl.com/docs/api/projects#get-workspaceprojects
      */
+
+    /**
+     * https://developers.track.toggl.com/docs/api/projects#patch-workspaceprojects
+     */
+
+    /**
+     * https://developers.track.toggl.com/docs/api/projects#post-workspaceprojects
+     * https://developers.track.toggl.com/docs/api/projects#get-workspaceproject
+     * https://developers.track.toggl.com/docs/api/projects#put-workspaceproject
+     * https://developers.track.toggl.com/docs/api/projects#delete-workspaceproject
+     */
     public function testProject_create_get_update_delete(): void
     {
         $project_created = $this->client->createProject([
@@ -58,25 +69,5 @@ class TogglAPIV9ProjectsTest extends TogglAPIV9TestCase
         ]);
         $this->assertEmpty($delete_result);
     }
-
-    /**
-     * https://developers.track.toggl.com/docs/api/projects#post-workspaceprojects
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/projects#patch-workspaceprojects
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/projects#get-workspaceproject
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/projects#put-workspaceproject
-     */
-
-    /**
-     * https://developers.track.toggl.com/docs/api/projects#delete-workspaceproject
-     */
 
 }
