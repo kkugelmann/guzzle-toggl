@@ -4,6 +4,67 @@
   "description": "Toggl API v9",
   "baseUri": "https://api.track.toggl.com/api/v9/",
   "operations": {
+    "GetCurrentUser": {
+      "httpMethod": "GET",
+      "uri": "me",
+      "summary": "Returns details for the current user.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "with_related_data": {
+          "type": "boolean",
+          "location": "query",
+          "description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
+        }
+      }
+    },
+    "UpdateCurrentUser": {
+      "httpMethod": "PUT",
+      "uri": "me",
+      "summary": "Updates details for the current user.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "beginning_of_week": {
+          "type": "integer",
+          "location": "json",
+          "description": "User's first day of the week. Sunday: 0, Monday:1, etc."
+        },
+        "country_id": {
+          "type": "integer",
+          "location": "json",
+          "description": "User's country ID"
+        },
+        "current_password": {
+          "type": "string",
+          "location": "json",
+          "description": "User's current password (used to change the current password)"
+        },
+        "default_workspace_id": {
+          "type": "integer",
+          "location": "json",
+          "description": "User's default workspace ID"
+        },
+        "email": {
+          "type": "string",
+          "location": "json",
+          "description": "User's email address"
+        },
+        "fullname": {
+          "type": "string",
+          "location": "json",
+          "description": "User's full name"
+        },
+        "password": {
+          "type": "string",
+          "location": "json",
+          "description": "User's new password (current one must also be provided)"
+        },
+        "timezone": {
+          "type": "string",
+          "location": "json",
+          "description": "User's timezone"
+        }
+      }
+    },
     "ListClients": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients",
@@ -1363,19 +1424,6 @@
           "location": "query",
           "type": "string",
           "description": "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 format. To be used with start_date."
-        }
-      }
-    },
-    "GetCurrentUser": {
-      "httpMethod": "GET",
-      "uri": "me",
-      "summary": "Returns details for the current user.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "with_related_data": {
-          "type": "boolean",
-          "location": "query",
-          "description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
         }
       }
     },
