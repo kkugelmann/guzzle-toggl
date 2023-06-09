@@ -27,7 +27,7 @@ class TogglAPIV9TestCase extends TestCase
         $this->client = TogglClient::factory([
             'api_key' => $toggl_api_key,
         ]);
-        $this->workspace_id = $toggl_test_workspace_id;
+        $this->workspace_id = (int) $toggl_test_workspace_id;
 
         // to detect your workspace id(s), print it/them here with XDebug (or similar)
         $workspaces = $this->client->getWorkspaces();

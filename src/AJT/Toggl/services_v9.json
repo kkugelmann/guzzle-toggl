@@ -604,10 +604,9 @@
       }
     },
     "ListClients": {
-      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients",
-      "summary": "List clients from workspace.",
+      "summary": "List clients from workspace. | https://developers.track.toggl.com/docs/api/clients#get-list-clients",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {

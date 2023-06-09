@@ -10,6 +10,33 @@ class TogglAPIV9ClientsTest extends TogglAPIV9TestCase
     /**
      * https://developers.track.toggl.com/docs/api/clients#get-list-clients
      */
+    public function testListClients(): void
+    {
+        $new_clients = [
+            ['name' => 'AAA test client one'],
+            ['name' => 'AAA test client two'],
+            ['name' => 'AAA test client three'],
+        ];
+        $clients_created = [];
+        foreach ($new_clients as $new_client) {
+            $clients_created[] = $this->client->createClient([
+                'workspace_id' => $this->workspace_id,
+                'name' => $new_client['name'],
+            ])->toArray();
+        }
+
+        $clients_listed = $this->client->listClients([
+            'workspace_id' => $this->workspace_id,
+        ]);
+        $this->assertEquals($clients_created, $clients_listed->toArray());
+
+        foreach ($clients_created as $client_created) {
+            @$this->client->deleteClient([
+                'workspace_id' => $this->workspace_id,
+                'client_id' => $client_created['id'],
+            ]);
+        }
+    }
 
     /**
      * https://developers.track.toggl.com/docs/api/clients#post-create-client
