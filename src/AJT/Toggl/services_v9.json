@@ -4,10 +4,609 @@
   "description": "Toggl API v9",
   "baseUri": "https://api.track.toggl.com/api/v9/",
   "operations": {
+    "GetMe": {
+      "httpMethod": "GET",
+      "uri": "me",
+      "summary": "Returns details for the current user. | https://developers.track.toggl.com/docs/api/me#get-me",
+      "responseModel": "getResponse",
+      "parameters": {
+        "with_related_data": {
+          "type": "boolean",
+          "location": "query",
+          "description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
+        }
+      }
+    },
+    "GetCurrentUser": {
+      "extends": "GetMe",
+      "deprecated": true
+    },
+    "UpdateMe": {
+      "httpMethod": "PUT",
+      "uri": "me",
+      "summary": "Updates details for the current user. | https://developers.track.toggl.com/docs/api/me#put-me",
+      "responseModel": "getResponse",
+      "parameters": {
+        "beginning_of_week": {
+          "type": "integer",
+          "location": "json",
+          "description": "User's first day of the week. Sunday: 0, Monday:1, etc."
+        },
+        "country_id": {
+          "type": "integer",
+          "location": "json",
+          "description": "User's country ID"
+        },
+        "current_password": {
+          "type": "string",
+          "location": "json",
+          "description": "User's current password (used to change the current password)"
+        },
+        "default_workspace_id": {
+          "type": "integer",
+          "location": "json",
+          "description": "User's default workspace ID"
+        },
+        "email": {
+          "type": "string",
+          "location": "json",
+          "description": "User's email address"
+        },
+        "fullname": {
+          "type": "string",
+          "location": "json",
+          "description": "User's full name"
+        },
+        "password": {
+          "type": "string",
+          "location": "json",
+          "description": "User's new password (current one must also be provided)"
+        },
+        "timezone": {
+          "type": "string",
+          "location": "json",
+          "description": "User's timezone"
+        }
+      }
+    },
+    "GetClients": {
+      "httpMethod": "GET",
+      "uri": "me/clients",
+      "summary": "Get clients visible to user | https://developers.track.toggl.com/docs/api/me#get-clients",
+      "responseModel": "getResponse",
+      "parameters": {
+        "since": {
+          "type": "integer",
+          "location": "query",
+          "description": "Retrieve clients created/modified/deleted since this date using UNIX timestamp."
+        }
+      }
+    },
+    "GetWorkspaces": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "me/workspaces",
+      "summary": "Lists workspaces for given user.",
+      "responseModel": "getResponse"
+    },
+    "CreateUser": {
+      "_todo": "Test needed",
+      "httpMethod": "POST",
+      "uri": "signup",
+      "summary": "Sign up as a new user.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "code": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "The code you received from the OAuth authorization step. (string, required). Required if signing up via OAuth."
+        },
+        "country_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "User's country ID, if not provided will be United States"
+        },
+        "created_with": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "Should describe the application/service that is using the API"
+        },
+        "email": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "a valid email for the user whose account is created (string, required)"
+        },
+        "full_name": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "User's full name, if not provided will be derived from the email address"
+        },
+        "google_access_token": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Legacy field"
+        },
+        "invitation_code": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Optional, used when creating account through an invitation"
+        },
+        "password": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "password at least 6 characters long (string, required)"
+        },
+        "provider": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Required if signing up via OAuth"
+        },
+        "timezone": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "User's timezone, if not provided will be UTC"
+        },
+        "token": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "Whether the Terms of Service have been accepted"
+        },
+        "tos_accepted": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether the Terms of Service have been accepted"
+        },
+        "workspace": {
+          "location": "json",
+          "type": "object",
+          "required": true,
+          "description": "Optional workspace settings, used when creating account not through an invitation",
+          "properties": {
+            "initial_pricing_plan": {
+              "type": "integer",
+              "required": true,
+              "description": "Plan ID for the new workspace"
+            },
+            "initial_trial": {
+              "type": "boolean",
+              "required": true,
+              "description": "New workspace should be created with a trial subscription? (only for stage)"
+            },
+            "name": {
+              "type": "string",
+              "required": true,
+              "description": "Workspace name, if not provided it will be based on the user's full name"
+            }
+          }
+        }
+      }
+    },
+    "GetTimeEntries": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "me/time_entries",
+      "summary": "Get time entries started in a specific time range.If start_date and end_date are not specified, time entries started during the last 9 days are returned.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "since": {
+          "location": "query",
+          "type": "integer",
+          "description": "Get entries modified since this date using UNIX timestamp, including deleted ones."
+        },
+        "before": {
+          "location": "query",
+          "type": "string",
+          "description": "Get entries with start time, before given date (YYYY-MM-DD) or with time in RFC3339 format."
+        },
+        "start_date": {
+          "location": "query",
+          "type": "string",
+          "description": "Get entries with start time, from start_date YYYY-MM-DD or with time in RFC3339 format. To be used with end_date."
+        },
+        "end_date": {
+          "location": "query",
+          "type": "string",
+          "description": "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 format. To be used with start_date."
+        }
+      }
+    },
+    "GetCurrentTimeEntry": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "me/time_entries/current",
+      "summary": "Get Current Time Entry"
+    },
+    "CreateTimeEntry": {
+      "_todo": "Test needed",
+      "httpMethod": "POST",
+      "uri": "workspaces/{workspace_id}/time_entries",
+      "summary": "Creates a new workspace TimeEntry.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "created_with": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "the name of your client app (string, required)"
+        },
+        "duration": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "duration of time entry (integer, required)"
+        },
+        "description": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "(string, not required)"
+        },
+        "project_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "pid: project ID (integer, not required)"
+        },
+        "task_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "tid: task ID (integer, not required)"
+        },
+        "billable": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "(boolean, not required, default false, available for pro workspaces)"
+        },
+        "tags": {
+          "location": "json",
+          "type": "array",
+          "required": false,
+          "items": {
+            "type": "string"
+          },
+          "description": "a list of tag names (array of strings, not required)"
+        },
+        "start": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "start of time entry (string, required, ISO 8601 date and time)"
+        }
+      }
+    },
+    "UpdateTimeEntry": {
+      "_todo": "Test needed",
+      "httpMethod": "PUT",
+      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
+      "summary": "Updates a workspace time entry.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "time_entry_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "TimeEntry ID."
+        },
+        "created_with": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "the name of your client app (string, required)"
+        },
+        "duration": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "duration of time entry (integer, required)"
+        },
+        "description": {
+          "location": "json",
+          "type": "string",
+          "required": false,
+          "description": "(string, not required)"
+        },
+        "project_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "pid: project ID (integer, not required)"
+        },
+        "task_id": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "tid: task ID (integer, not required)"
+        },
+        "billable": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "(boolean, not required, default false, available for pro workspaces)"
+        },
+        "tags": {
+          "location": "json",
+          "type": "array",
+          "required": false,
+          "items": {
+            "type": "string"
+          },
+          "description": "a list of tag names (array of strings, not required)"
+        },
+        "start": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "start of time entry (string, required, ISO 8601 date and time)"
+        }
+      }
+    },
+    "DeleteTimeEntry": {
+      "_todo": "Test needed",
+      "httpMethod": "DELETE",
+      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
+      "summary": "Deletes a workspace time entry.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "time_entry_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "TimeEntry ID."
+        }
+      }
+    },
+    "StopTimeEntry": {
+      "_todo": "Test needed",
+      "httpMethod": "PATCH",
+      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}/stop",
+      "summary": "Stop Time Entry",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "time_entry_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "TimeEntry ID."
+        }
+      }
+    },
+    "AcceptInvitation": {
+      "_todo": "Test needed",
+      "httpMethod": "POST",
+      "uri": "organizations/invitations/{invitation_code}/accept",
+      "summary": "User connected with invitation is marked as joined, email is sent to the inviter.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "invitation_code": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Invitation code"
+        }
+      }
+    },
+    "RejectInvitation": {
+      "_todo": "Test needed",
+      "httpMethod": "POST",
+      "uri": "organizations/invitations/{invitation_code}/reject",
+      "summary": "User connected with invitation is marked as deleted.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "invitation_code": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Invitation code"
+        }
+      }
+    },
+    "CreateUserInvitation": {
+      "_todo": "Test needed",
+      "httpMethod": "POST",
+      "uri": "organizations/{organization_id}/invitations",
+      "summary": "Creates a new invitation for the user.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "organization_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the organization."
+        },
+        "emails": {
+          "location": "json",
+          "type": "array",
+          "required": true,
+          "description": "List of valid emails (array, required)",
+          "items": {
+            "type": "string",
+            "required": true,
+            "description": "The valid email of user who must be invite to this workspace (string, required)"
+          }
+        },
+        "workspaces": {
+          "location": "json",
+          "type": "array",
+          "required": true,
+          "description": "List of valid workspaces (array, required)",
+          "items": {
+            "type": "object",
+            "required": true,
+            "description": "The valid workspace of user who must be invite to this workspace (object, required)",
+            "properties": {
+              "admin": {
+                "type": "boolean",
+                "required": true,
+                "description": "If true, the invited user will be workspace admin (boolean, required)"
+              },
+              "workspace_id": {
+                "type": "integer",
+                "required": true,
+                "description": "Numeric ID of the workspace (integer, required)"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ResendInvitation": {
+      "_todo": "Test needed",
+      "httpMethod": "PUT",
+      "uri": "organizations/{organization_id}/invitations/{invitation_code}/resend\n",
+      "summary": "Resend invitation email to user.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "organization_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Organization ID"
+        },
+        "invitation_code": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Invitation code"
+        }
+      }
+    },
+    "GetGroups": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "organizations/{organization_id}/groups",
+      "summary": "Returns list of groups in organization based on set of url parameters. List is sorted by name.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "organization_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the organization"
+        }
+      }
+    },
+    "GetWorkspaceWorkspaceUsers": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "organizations/{organization_id}/workspaces/{workspace_id}/workspace_users",
+      "summary": "Returns any users who belong to the workspace directly or through at least one group.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "organization_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the organization"
+        },
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Workspace ID"
+        }
+      }
+    },
+    "GetWorkspaceUsers": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "workspaces/{workspace_id}/users",
+      "summary": "List all users for a given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        }
+      }
+    },
+    "UpdateWorkspaceUser": {
+      "_todo": "Test needed",
+      "httpMethod": "PUT",
+      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "summary": "Update the data for a workspace_user in a given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace"
+        },
+        "workspace_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace user"
+        }
+      }
+    },
+    "DeleteWorkspaceUser": {
+      "_todo": "Test needed",
+      "httpMethod": "DELETE",
+      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
+      "summary": "Removes user from workspace",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace."
+        },
+        "workspace_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the workspace user."
+        }
+      }
+    },
     "ListClients": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients",
-      "summary": "List clients from workspace.",
+      "summary": "List clients from workspace. | https://developers.track.toggl.com/docs/api/clients#get-list-clients",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -21,7 +620,7 @@
     "CreateClient": {
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients",
-      "summary": "Create Client",
+      "summary": "Create Client | https://developers.track.toggl.com/docs/api/clients#post-create-client",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -59,7 +658,7 @@
     "GetClient": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients/{client_id}",
-      "summary": "Load client from workspace.",
+      "summary": "Load client from workspace. | https://developers.track.toggl.com/docs/api/clients#get-load-client-from-id",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -79,7 +678,7 @@
     "UpdateClient": {
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/clients/{client_id}",
-      "summary": "Update workspace client.",
+      "summary": "Update workspace client. | https://developers.track.toggl.com/docs/api/clients#put-change-client",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -123,7 +722,7 @@
     "DeleteClient": {
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/clients/{client_id}",
-      "summary": "Delete workspace client.",
+      "summary": "Delete workspace client. | https://developers.track.toggl.com/docs/api/clients#delete-delete-client",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -140,13 +739,8 @@
         }
       }
     },
-    "GetClients": {
-      "httpMethod": "GET",
-      "uri": "me/clients",
-      "summary": "Get clients visible to user",
-      "responseModel": "getResponse"
-    },
     "ArchiveClient": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
       "summary": "Archives a workspace client and related projects. Only for premium workspaces.",
@@ -167,6 +761,7 @@
       }
     },
     "RestoreClient": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
       "summary": "Restores client and all related or specified projects from the given workspace.",
@@ -201,30 +796,289 @@
         }
       }
     },
-    "GetClientProjects": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
+    "GetProjectUsers": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
-      "uri": "clients/{id}/projects",
-      "summary": "Get client projects",
+      "uri": "workspaces/{workspace_id}/project_users",
+      "summary": "List all projects users for a given workspace.",
       "responseModel": "getResponse",
       "parameters": {
-        "id": {
+        "workspace_id": {
           "location": "uri",
-          "description": "Client ID",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "project_ids": {
+          "location": "query",
+          "type": "string",
+          "description": "Numeric IDs of projects, comma-separated"
+        },
+        "with_group_members": {
+          "location": "query",
+          "type": "boolean",
+          "description": "Include group members"
+        }
+      }
+    },
+    "CreateProjectUser": {
+      "_todo": "Test needed",
+      "httpMethod": "POST",
+      "uri": "workspaces/{workspace_id}/project_users",
+      "summary": "Include a project user for a given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "project_id": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "Project ID"
+        },
+        "user_id": {
+          "location": "json",
+          "type": "integer",
+          "required": true,
+          "description": "user ID, who is added to the project (integer, required)"
+        },
+        "labour_cost": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "Labour cost for this project user"
+        },
+        "manager": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "admin rights for this project (boolean, default false)"
+        },
+        "rate": {
+          "location": "json",
+          "type": "numeric",
+          "required": false,
+          "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
+        }
+      }
+    },
+    "UpdateProjectUsers": {
+      "_todo": "Test needed",
+      "httpMethod": "PATCH",
+      "uri": "workspaces/{workspace_id}/project_users/{project_user_ids}",
+      "summary": "Patch a list of project users for a given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "project_user_ids": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Comma separated list of Project User IDs"
+        },
+        "project_user": {
+          "location": "json",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "Project User Object",
+            "properties": {
+              "manager": {
+                "type": "boolean",
+                "required": false,
+                "default": false,
+                "description": "admin rights for this project (boolean, default false)"
+              },
+              "rate": {
+                "type": "numeric",
+                "required": false,
+                "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
+              }
+            }
+          }
+        }
+      }
+    },
+    "DeleteProjectUsers": {
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
+      "httpMethod": "DELETE",
+      "uri": "project_users/{ids}",
+      "summary": "Delete multiple Project Users",
+      "responseModel": "getResponse",
+      "parameters": {
+        "ids": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Comma separated list of Project User IDs"
+        }
+      }
+    },
+    "UpdateProjectUser": {
+      "_todo": "Test needed",
+      "httpMethod": "PUT",
+      "uri": "workspaces/{workspace_id}/project_users/{project_user_id}",
+      "summary": "Update Project User",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "project_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the project user"
+        },
+        "labour_cost": {
+          "location": "json",
+          "type": "integer",
+          "required": false,
+          "description": "Labour cost for this project user"
+        },
+        "manager": {
+          "location": "json",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "admin rights for this project (boolean, default false)"
+        },
+        "rate": {
+          "location": "json",
+          "type": "numeric",
+          "required": false,
+          "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
+        }
+      }
+    },
+    "DeleteProjectUser": {
+      "_todo": "Test needed",
+      "httpMethod": "DELETE",
+      "uri": "workspaces/{workspace_id}/project_users/{project_user_id}",
+      "summary": "Delete Project User",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "project_user_id": {
+          "location": "uri",
+          "type": "integer",
+          "required": true,
+          "description": "Numeric ID of the project user\n"
+        }
+      }
+    },
+    "GetProjects": {
+      "_todo": "Test needed",
+      "httpMethod": "GET",
+      "uri": "workspaces/{workspace_id}/projects",
+      "summary": "Get projects",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Workspace ID",
           "required": true,
           "type": "integer"
         },
         "active": {
           "location": "query",
-          "description": "Active (true, false, both)",
+          "type": "string",
+          "description": "possible values true/false/both. By default true. If false, only archived projects are returned."
+        },
+        "since": {
+          "location": "query",
+          "type": "integer",
+          "description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
+        },
+        "billable": {
+          "location": "query",
+          "type": "boolean"
+        },
+        "user_ids": {
+          "location": "query",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "client_ids": {
+          "location": "query",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "group_ids": {
+          "location": "query",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "name": {
+          "location": "string",
           "type": "string"
+        },
+        "page": {
+          "location": "query",
+          "type": "integer"
+        },
+        "sort_field": {
+          "location": "query",
+          "type": "string"
+        },
+        "sort_order": {
+          "location": "query",
+          "type": "string"
+        },
+        "only_templates": {
+          "location": "query",
+          "type": "boolean"
+        },
+        "per_page": {
+          "location": "query",
+          "type": "integer",
+          "description": "Number of records per page."
+        }
+      }
+    },
+    "DeleteProjects": {
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
+      "httpMethod": "DELETE",
+      "uri": "projects/{ids}",
+      "summary": "Delete multiple Project",
+      "responseModel": "getResponse",
+      "parameters": {
+        "ids": {
+          "location": "uri",
+          "type": "string",
+          "required": true,
+          "description": "Comma separated list of Project IDs"
         }
       }
     },
     "CreateProject": {
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/projects",
-      "summary": "Create project for given workspace.",
+      "summary": "Create project for given workspace. | https://developers.track.toggl.com/docs/api/projects#post-workspaceprojects",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -374,104 +1228,10 @@
         }
       }
     },
-    "GetProjects": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{workspace_id}/projects",
-      "summary": "Get projects",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Workspace ID",
-          "required": true,
-          "type": "integer"
-        },
-        "active": {
-          "location": "query",
-          "type": "string",
-          "description": "possible values true/false/both. By default true. If false, only archived projects are returned."
-        },
-        "since": {
-          "location": "query",
-          "type": "integer",
-          "description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
-        },
-        "billable": {
-          "location": "query",
-          "type": "boolean"
-        },
-        "user_ids": {
-          "location": "query",
-          "type": "array",
-          "items": {
-            "type": "integer"
-          }
-        },
-        "client_ids": {
-          "location": "query",
-          "type": "array",
-          "items": {
-            "type": "integer"
-          }
-        },
-        "group_ids": {
-          "location": "query",
-          "type": "array",
-          "items": {
-            "type": "integer"
-          }
-        },
-        "name": {
-          "location": "string",
-          "type": "string"
-        },
-        "page": {
-          "location": "query",
-          "type": "integer"
-        },
-        "sort_field": {
-          "location": "query",
-          "type": "string"
-        },
-        "sort_order": {
-          "location": "query",
-          "type": "string"
-        },
-        "only_templates": {
-          "location": "query",
-          "type": "boolean"
-        },
-        "per_page": {
-          "location": "query",
-          "type": "integer",
-          "description": "Number of records per page."
-        }
-      }
-    },
     "GetProject": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/projects/{project_id}",
-      "summary": "Get Project details",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "project_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the project"
-        }
-      }
-    },
-    "GetProjectTasks": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
-      "summary": "Get project tasks for given workspace.",
+      "summary": "Get Project details | https://developers.track.toggl.com/docs/api/projects#get-workspaceproject",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -491,7 +1251,7 @@
     "UpdateProject": {
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/projects/{project_id}",
-      "summary": "Update project for given workspace.",
+      "summary": "Update project for given workspace. | https://developers.track.toggl.com/docs/api/projects#put-workspaceproject",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -648,7 +1408,7 @@
     "DeleteProject": {
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/projects/{project_id}",
-      "summary": "Delete project for given workspace.",
+      "summary": "Delete project for given workspace. | https://developers.track.toggl.com/docs/api/projects#delete-workspaceproject",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -665,340 +1425,37 @@
         }
       }
     },
-    "DeleteProjects": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
-      "httpMethod": "DELETE",
-      "uri": "projects/{ids}",
-      "summary": "Delete multiple Project",
-      "responseModel": "getResponse",
-      "parameters": {
-        "ids": {
-          "location": "uri",
-          "type": "string",
-          "required": true,
-          "description": "Comma separated list of Project IDs"
-        }
-      }
-    },
-    "GetProjectUsers": {
+    "GetClientProjects": {
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
       "httpMethod": "GET",
-      "uri": "workspaces/{workspace_id}/project_users",
-      "summary": "List all projects users for a given workspace.",
+      "uri": "clients/{id}/projects",
+      "summary": "Get client projects",
       "responseModel": "getResponse",
       "parameters": {
-        "workspace_id": {
+        "id": {
           "location": "uri",
-          "description": "Numeric ID of the workspace",
+          "description": "Client ID",
           "required": true,
           "type": "integer"
         },
-        "project_ids": {
+        "active": {
           "location": "query",
-          "type": "string",
-          "description": "Numeric IDs of projects, comma-separated"
-        },
-        "with_group_members": {
-          "location": "query",
-          "type": "boolean",
-          "description": "Include group members"
+          "description": "Active (true, false, both)",
+          "type": "string"
         }
       }
     },
-    "CreateProjectUser": {
-      "httpMethod": "POST",
-      "uri": "workspaces/{workspace_id}/project_users",
-      "summary": "Include a project user for a given workspace.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        },
-        "project_id": {
-          "location": "json",
-          "type": "integer",
-          "required": true,
-          "description": "Project ID"
-        },
-        "user_id": {
-          "location": "json",
-          "type": "integer",
-          "required": true,
-          "description": "user ID, who is added to the project (integer, required)"
-        },
-        "labour_cost": {
-          "location": "json",
-          "type": "integer",
-          "required": false,
-          "description": "Labour cost for this project user"
-        },
-        "manager": {
-          "location": "json",
-          "type": "boolean",
-          "required": false,
-          "default": false,
-          "description": "admin rights for this project (boolean, default false)"
-        },
-        "rate": {
-          "location": "json",
-          "type": "numeric",
-          "required": false,
-          "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-        }
-      }
-    },
-    "UpdateProjectUser": {
-      "httpMethod": "PUT",
-      "uri": "workspaces/{workspace_id}/project_users/{project_user_id}",
-      "summary": "Update Project User",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        },
-        "project_user_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the project user"
-        },
-        "labour_cost": {
-          "location": "json",
-          "type": "integer",
-          "required": false,
-          "description": "Labour cost for this project user"
-        },
-        "manager": {
-          "location": "json",
-          "type": "boolean",
-          "required": false,
-          "default": false,
-          "description": "admin rights for this project (boolean, default false)"
-        },
-        "rate": {
-          "location": "json",
-          "type": "numeric",
-          "required": false,
-          "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-        }
-      }
-    },
-    "DeleteProjectUser": {
-      "httpMethod": "DELETE",
-      "uri": "workspaces/{workspace_id}/project_users/{project_user_id}",
-      "summary": "Delete Project User",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        },
-        "project_user_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the project user\n"
-        }
-      }
-    },
-    "UpdateProjectUsers": {
-      "httpMethod": "PATCH",
-      "uri": "workspaces/{workspace_id}/project_users/{project_user_ids}\n\n",
-      "summary": "Patch a list of project users for a given workspace.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        },
-        "project_user_ids": {
-          "location": "uri",
-          "type": "string",
-          "required": true,
-          "description": "Comma separated list of Project User IDs"
-        },
-        "project_user": {
-          "location": "json",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "Project User Object",
-            "properties": {
-              "manager": {
-                "type": "boolean",
-                "required": false,
-                "default": false,
-                "description": "admin rights for this project (boolean, default false)"
-              },
-              "rate": {
-                "type": "numeric",
-                "required": false,
-                "description": "hourly rate for the project user (float, not-required, only for pro workspaces) in the currency of the project's client or in workspace default currency."
-              }
-            }
-          }
-        }
-      }
-    },
-    "DeleteProjectUsers": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
-      "httpMethod": "DELETE",
-      "uri": "project_users/{ids}",
-      "summary": "Delete multiple Project Users",
-      "responseModel": "getResponse",
-      "parameters": {
-        "ids": {
-          "location": "uri",
-          "type": "string",
-          "required": true,
-          "description": "Comma separated list of Project User IDs"
-        }
-      }
-    },
-    "GetTags": {
+    "GetProjectTasks": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
-      "uri": "workspaces/{workspace_id}/tags",
-      "summary": "List Workspace tags.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        }
-      }
-    },
-    "CreateTag": {
-      "httpMethod": "POST",
-      "uri": "workspaces/{workspace_id}/tags",
-      "summary": "Create Tag",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        },
-        "name": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "The name of the tag (string, required, unique in workspace)"
-        }
-      }
-    },
-    "UpdateTag": {
-      "httpMethod": "PUT",
-      "uri": "workspaces/{workspace_id}/tags/{tag_id}",
-      "summary": "Update workspace tags.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "tag_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the tag"
-        },
-        "name": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "The name of the tag (string, required, unique in workspace)"
-        }
-      }
-    },
-    "DeleteTag": {
-      "httpMethod": "DELETE",
-      "uri": "workspaces/{workspace_id}/tags/{tag_id}",
-      "summary": "Delete workspace tags.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "tag_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the tag"
-        }
-      }
-    },
-    "CreateTask": {
-      "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
-      "summary": "Create Task",
+      "summary": "Get project tasks for given workspace.",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
           "location": "uri",
-          "description": "Numeric ID of the workspace",
-          "required": true,
-          "type": "integer"
-        },
-        "project_id": {
-          "location": "uri",
-          "description": "Numeric ID of the project",
-          "required": true,
-          "type": "integer"
-        },
-        "name": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "The name of the task (string, required, unique in project)"
-        },
-        "user_id": {
-          "location": "json",
           "type": "integer",
-          "required": false,
-          "description": "user ID, to whom the task is assigned to (integer, not required)"
-        },
-        "estimated_seconds": {
-          "location": "json",
-          "type": "integer",
-          "required": false,
-          "description": "estimated duration of task in seconds (integer, not required)"
-        },
-        "active": {
-          "location": "json",
-          "type": "boolean",
-          "required": false,
-          "default": true,
-          "description": "whether the task is done or not (boolean, by default true)"
-        }
-      }
-    },
-    "GetTask": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
-      "summary": "Get Task",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
           "required": true,
-          "type": "integer",
           "description": "Numeric ID of the workspace"
         },
         "project_id": {
@@ -1006,90 +1463,11 @@
           "type": "integer",
           "required": true,
           "description": "Numeric ID of the project"
-        },
-        "task_id": {
-          "location": "uri",
-          "description": "Numeric ID of the task",
-          "required": true,
-          "type": "integer"
-        }
-      }
-    },
-    "UpdateTask": {
-      "httpMethod": "PUT",
-      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
-      "summary": "Update project task for given workspace.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "required": true,
-          "type": "integer",
-          "description": "Numeric ID of the workspace"
-        },
-        "project_id": {
-          "location": "uri",
-          "required": true,
-          "type": "integer",
-          "description": "Numeric ID of the project"
-        },
-        "task_id": {
-          "location": "uri",
-          "required": true,
-          "type": "integer",
-          "description": "Numeric ID of the task"
-        },
-        "name": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "The name of the task (string, required, unique in project)"
-        },
-        "user_id": {
-          "type": "integer",
-          "required": false,
-          "description": "user ID, to whom the task is assigned to (integer, not required)"
-        },
-        "estimated_seconds": {
-          "type": "integer",
-          "required": false,
-          "description": "estimated duration of task in seconds (integer, not required)"
-        },
-        "active": {
-          "type": "boolean",
-          "required": false,
-          "default": true,
-          "description": "whether the task is done or not (boolean, by default true)"
-        }
-      }
-    },
-    "DeleteTask": {
-      "httpMethod": "DELETE",
-      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
-      "summary": "Delete projects task for given workspace.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "required": true,
-          "type": "integer",
-          "description": "Numeric ID of the workspace"
-        },
-        "project_id": {
-          "location": "uri",
-          "required": true,
-          "type": "integer",
-          "description": "Numeric ID of the project"
-        },
-        "task_id": {
-          "location": "uri",
-          "required": true,
-          "type": "integer",
-          "description": "Numeric ID of the task"
         }
       }
     },
     "UpdateTasks": {
+      "_todo": "Test needed",
       "httpMethod": "PATCH",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_ids}",
       "summary": "Update project tasks for given workspace.",
@@ -1141,7 +1519,7 @@
       }
     },
     "DeleteTasks": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
       "httpMethod": "DELETE",
       "uri": "tasks/{ids}",
       "summary": "Delete Tasks",
@@ -1155,391 +1533,193 @@
         }
       }
     },
-    "CreateTimeEntry": {
+    "CreateTask": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
-      "uri": "workspaces/{workspace_id}/time_entries",
-      "summary": "Creates a new workspace TimeEntry.",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
+      "summary": "Create Task",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
           "location": "uri",
-          "type": "integer",
+          "description": "Numeric ID of the workspace",
           "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "created_with": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "the name of your client app (string, required)"
-        },
-        "duration": {
-          "location": "json",
-          "type": "integer",
-          "required": true,
-          "description": "duration of time entry (integer, required)"
-        },
-        "description": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "(string, not required)"
+          "type": "integer"
         },
         "project_id": {
+          "location": "uri",
+          "description": "Numeric ID of the project",
+          "required": true,
+          "type": "integer"
+        },
+        "name": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "The name of the task (string, required, unique in project)"
+        },
+        "user_id": {
           "location": "json",
           "type": "integer",
           "required": false,
-          "description": "pid: project ID (integer, not required)"
+          "description": "user ID, to whom the task is assigned to (integer, not required)"
         },
-        "task_id": {
+        "estimated_seconds": {
           "location": "json",
           "type": "integer",
           "required": false,
-          "description": "tid: task ID (integer, not required)"
+          "description": "estimated duration of task in seconds (integer, not required)"
         },
-        "billable": {
+        "active": {
           "location": "json",
           "type": "boolean",
           "required": false,
-          "default": false,
-          "description": "(boolean, not required, default false, available for pro workspaces)"
-        },
-        "tags": {
-          "location": "json",
-          "type": "array",
-          "required": false,
-          "items": {
-            "type": "string"
-          },
-          "description": "a list of tag names (array of strings, not required)"
-        },
-        "start": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "start of time entry (string, required, ISO 8601 date and time)"
+          "default": true,
+          "description": "whether the task is done or not (boolean, by default true)"
         }
       }
     },
-    "StopTimeEntry": {
-      "httpMethod": "PATCH",
-      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}/stop",
-      "summary": "Stop Time Entry",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "time_entry_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "TimeEntry ID."
-        }
-      }
-    },
-    "GetCurrentTimeEntry": {
+    "GetTask": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
-      "uri": "me/time_entries/current",
-      "summary": "Get Current Time Entry"
-    },
-    "UpdateTimeEntry": {
-      "httpMethod": "PUT",
-      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
-      "summary": "Updates a workspace time entry.",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
+      "summary": "Get Task",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
           "location": "uri",
-          "type": "integer",
           "required": true,
+          "type": "integer",
           "description": "Numeric ID of the workspace"
-        },
-        "time_entry_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "TimeEntry ID."
-        },
-        "created_with": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "the name of your client app (string, required)"
-        },
-        "duration": {
-          "location": "json",
-          "type": "integer",
-          "required": true,
-          "description": "duration of time entry (integer, required)"
-        },
-        "description": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "(string, not required)"
         },
         "project_id": {
-          "location": "json",
+          "location": "uri",
           "type": "integer",
-          "required": false,
-          "description": "pid: project ID (integer, not required)"
+          "required": true,
+          "description": "Numeric ID of the project"
         },
         "task_id": {
-          "location": "json",
-          "type": "integer",
-          "required": false,
-          "description": "tid: task ID (integer, not required)"
-        },
-        "billable": {
-          "location": "json",
-          "type": "boolean",
-          "required": false,
-          "default": false,
-          "description": "(boolean, not required, default false, available for pro workspaces)"
-        },
-        "tags": {
-          "location": "json",
-          "type": "array",
-          "required": false,
-          "items": {
-            "type": "string"
-          },
-          "description": "a list of tag names (array of strings, not required)"
-        },
-        "start": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "start of time entry (string, required, ISO 8601 date and time)"
-        }
-      }
-    },
-    "DeleteTimeEntry": {
-      "httpMethod": "DELETE",
-      "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
-      "summary": "Deletes a workspace time entry.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
           "location": "uri",
-          "type": "integer",
+          "description": "Numeric ID of the task",
           "required": true,
-          "description": "Numeric ID of the workspace"
-        },
-        "time_entry_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "TimeEntry ID."
+          "type": "integer"
         }
       }
     },
-    "GetTimeEntries": {
-      "httpMethod": "GET",
-      "uri": "me/time_entries",
-      "summary": "Get time entries started in a specific time range.If start_date and end_date are not specified, time entries started during the last 9 days are returned.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "since": {
-          "location": "query",
-          "type": "integer",
-          "description": "Get entries modified since this date using UNIX timestamp, including deleted ones."
-        },
-        "before": {
-          "location": "query",
-          "type": "string",
-          "description": "Get entries with start time, before given date (YYYY-MM-DD) or with time in RFC3339 format."
-        },
-        "start_date": {
-          "location": "query",
-          "type": "string",
-          "description": "Get entries with start time, from start_date YYYY-MM-DD or with time in RFC3339 format. To be used with end_date."
-        },
-        "end_date": {
-          "location": "query",
-          "type": "string",
-          "description": "Get entries with start time, until end_date YYYY-MM-DD or with time in RFC3339 format. To be used with start_date."
-        }
-      }
-    },
-    "GetCurrentUser": {
-      "httpMethod": "GET",
-      "uri": "me",
-      "summary": "Returns details for the current user.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "with_related_data": {
-          "type": "boolean",
-          "location": "query",
-          "description": "Retrieve user related data (clients, projects, tasks, tags, workspaces, time entries, etc.)"
-        }
-      }
-    },
-    "CreateUser": {
-      "httpMethod": "POST",
-      "uri": "signup",
-      "summary": "Sign up as a new user.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "code": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "The code you received from the OAuth authorization step. (string, required). Required if signing up via OAuth."
-        },
-        "country_id": {
-          "location": "json",
-          "type": "integer",
-          "required": false,
-          "description": "User's country ID, if not provided will be United States"
-        },
-        "created_with": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "Should describe the application/service that is using the API"
-        },
-        "email": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "a valid email for the user whose account is created (string, required)"
-        },
-        "full_name": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "User's full name, if not provided will be derived from the email address"
-        },
-        "google_access_token": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "Legacy field"
-        },
-        "invitation_code": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "Optional, used when creating account through an invitation"
-        },
-        "password": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "password at least 6 characters long (string, required)"
-        },
-        "provider": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "Required if signing up via OAuth"
-        },
-        "timezone": {
-          "location": "json",
-          "type": "string",
-          "required": true,
-          "description": "User's timezone, if not provided will be UTC"
-        },
-        "token": {
-          "location": "json",
-          "type": "string",
-          "required": false,
-          "description": "Whether the Terms of Service have been accepted"
-        },
-        "tos_accepted": {
-          "location": "json",
-          "type": "boolean",
-          "required": false,
-          "description": "Whether the Terms of Service have been accepted"
-        },
-        "workspace": {
-          "location": "json",
-          "type": "object",
-          "required": true,
-          "description": "Optional workspace settings, used when creating account not through an invitation",
-          "properties": {
-            "initial_pricing_plan": {
-              "type": "integer",
-              "required": true,
-              "description": "Plan ID for the new workspace"
-            },
-            "initial_trial": {
-              "type": "boolean",
-              "required": true,
-              "description": "New workspace should be created with a trial subscription? (only for stage)"
-            },
-            "name": {
-              "type": "string",
-              "required": true,
-              "description": "Workspace name, if not provided it will be based on the user's full name"
-            }
-          }
-        }
-      }
-    },
-    "GetGroups": {
-      "httpMethod": "GET",
-      "uri": "organizations/{organization_id}/groups",
-      "summary": "Returns list of groups in organization based on set of url parameters. List is sorted by name.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "organization_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the organization"
-        }
-      }
-    },
-    "GetWorkspaces": {
-      "httpMethod": "GET",
-      "uri": "me/workspaces",
-      "summary": "Lists workspaces for given user.",
-      "responseModel": "getResponse"
-    },
-    "GetWorkspaceUsers": {
-      "httpMethod": "GET",
-      "uri": "workspaces/{workspace_id}/users",
-      "summary": "List all users for a given workspace.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the workspace"
-        }
-      }
-    },
-    "GetWorkspaceWorkspaceUsers": {
-      "httpMethod": "GET",
-      "uri": "organizations/{organization_id}/workspaces/{workspace_id}/workspace_users",
-      "summary": "Returns any users who belong to the workspace directly or through at least one group.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "organization_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the organization"
-        },
-        "workspace_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Workspace ID"
-        }
-      }
-    },
-    "UpdateWorkspaceUser": {
+    "UpdateTask": {
+      "_todo": "Test needed",
       "httpMethod": "PUT",
-      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
-      "summary": "Update the data for a workspace_user in a given workspace.",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
+      "summary": "Update project task for given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the workspace"
+        },
+        "project_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the project"
+        },
+        "task_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the task"
+        },
+        "name": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "The name of the task (string, required, unique in project)"
+        },
+        "user_id": {
+          "type": "integer",
+          "required": false,
+          "description": "user ID, to whom the task is assigned to (integer, not required)"
+        },
+        "estimated_seconds": {
+          "type": "integer",
+          "required": false,
+          "description": "estimated duration of task in seconds (integer, not required)"
+        },
+        "active": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "whether the task is done or not (boolean, by default true)"
+        }
+      }
+    },
+    "DeleteTask": {
+      "_todo": "Test needed",
+      "httpMethod": "DELETE",
+      "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
+      "summary": "Delete projects task for given workspace.",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the workspace"
+        },
+        "project_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the project"
+        },
+        "task_id": {
+          "location": "uri",
+          "required": true,
+          "type": "integer",
+          "description": "Numeric ID of the task"
+        }
+      }
+    },
+    "GetTags": {
+      "httpMethod": "GET",
+      "uri": "workspaces/{workspace_id}/tags",
+      "summary": "List Workspace tags. | https://developers.track.toggl.com/docs/api/tags#get-tags",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        }
+      }
+    },
+    "CreateTag": {
+      "httpMethod": "POST",
+      "uri": "workspaces/{workspace_id}/tags",
+      "summary": "Create Tag | https://developers.track.toggl.com/docs/api/tags#post-create-tag",
+      "responseModel": "getResponse",
+      "parameters": {
+        "workspace_id": {
+          "location": "uri",
+          "description": "Numeric ID of the workspace",
+          "required": true,
+          "type": "integer"
+        },
+        "name": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag (string, required, unique in workspace)"
+        }
+      }
+    },
+    "UpdateTag": {
+      "httpMethod": "PUT",
+      "uri": "workspaces/{workspace_id}/tags/{tag_id}",
+      "summary": "Update workspace tags. | https://developers.track.toggl.com/docs/api/tags#put-update-tag",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1548,127 +1728,37 @@
           "required": true,
           "description": "Numeric ID of the workspace"
         },
-        "workspace_user_id": {
+        "tag_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Numeric ID of the workspace user"
+          "description": "Numeric ID of the tag"
+        },
+        "name": {
+          "location": "json",
+          "type": "string",
+          "required": true,
+          "description": "The name of the tag (string, required, unique in workspace)"
         }
       }
     },
-    "DeleteWorkspaceUser": {
+    "DeleteTag": {
       "httpMethod": "DELETE",
-      "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
-      "summary": "Removes user from workspace",
+      "uri": "workspaces/{workspace_id}/tags/{tag_id}",
+      "summary": "Delete workspace tags. | https://developers.track.toggl.com/docs/api/tags#delete-delete-tag",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Numeric ID of the workspace."
+          "description": "Numeric ID of the workspace"
         },
-        "workspace_user_id": {
+        "tag_id": {
           "location": "uri",
           "type": "integer",
           "required": true,
-          "description": "Numeric ID of the workspace user."
-        }
-      }
-    },
-    "AcceptInvitation": {
-      "httpMethod": "POST",
-      "uri": "organizations/invitations/{invitation_code}/accept",
-      "summary": "User connected with invitation is marked as joined, email is sent to the inviter.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "invitation_code": {
-          "location": "uri",
-          "type": "string",
-          "required": true,
-          "description": "Invitation code"
-        }
-      }
-    },
-    "RejectInvitation": {
-      "httpMethod": "POST",
-      "uri": "organizations/invitations/{invitation_code}/reject",
-      "summary": "User connected with invitation is marked as deleted.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "invitation_code": {
-          "location": "uri",
-          "type": "string",
-          "required": true,
-          "description": "Invitation code"
-        }
-      }
-    },
-    "CreateUserInvitation": {
-      "httpMethod": "POST",
-      "uri": "organizations/{organization_id}/invitations",
-      "summary": "Creates a new invitation for the user.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "organization_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Numeric ID of the organization."
-        },
-        "emails": {
-          "location": "json",
-          "type": "array",
-          "required": true,
-          "description": "List of valid emails (array, required)",
-          "items": {
-            "type": "string",
-            "required": true,
-            "description": "The valid email of user who must be invite to this workspace (string, required)"
-          }
-        },
-        "workspaces": {
-          "location": "json",
-          "type": "array",
-          "required": true,
-          "description": "List of valid workspaces (array, required)",
-          "items": {
-            "type": "object",
-            "required": true,
-            "description": "The valid workspace of user who must be invite to this workspace (object, required)",
-            "properties": {
-              "admin": {
-                "type": "boolean",
-                "required": true,
-                "description": "If true, the invited user will be workspace admin (boolean, required)"
-              },
-              "workspace_id": {
-                "type": "integer",
-                "required": true,
-                "description": "Numeric ID of the workspace (integer, required)"
-              }
-            }
-          }
-        }
-      }
-    },
-    "ResendInvitation": {
-      "httpMethod": "PUT",
-      "uri": "organizations/{organization_id}/invitations/{invitation_code}/resend\n",
-      "summary": "Resend invitation email to user.",
-      "responseModel": "getResponse",
-      "parameters": {
-        "organization_id": {
-          "location": "uri",
-          "type": "integer",
-          "required": true,
-          "description": "Organization ID"
-        },
-        "invitation_code": {
-          "location": "uri",
-          "type": "string",
-          "required": true,
-          "description": "Invitation code"
+          "description": "Numeric ID of the tag"
         }
       }
     }
