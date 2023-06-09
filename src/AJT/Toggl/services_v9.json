@@ -7,7 +7,7 @@
     "GetMe": {
       "httpMethod": "GET",
       "uri": "me",
-      "summary": "Returns details for the current user.",
+      "summary": "Returns details for the current user. | https://developers.track.toggl.com/docs/api/me#get-me",
       "responseModel": "getResponse",
       "parameters": {
         "with_related_data": {
@@ -24,7 +24,7 @@
     "UpdateMe": {
       "httpMethod": "PUT",
       "uri": "me",
-      "summary": "Updates details for the current user.",
+      "summary": "Updates details for the current user. | https://developers.track.toggl.com/docs/api/me#put-me",
       "responseModel": "getResponse",
       "parameters": {
         "beginning_of_week": {
@@ -72,7 +72,7 @@
     "GetClients": {
       "httpMethod": "GET",
       "uri": "me/clients",
-      "summary": "Get clients visible to user",
+      "summary": "Get clients visible to user | https://developers.track.toggl.com/docs/api/me#get-clients",
       "responseModel": "getResponse",
       "parameters": {
         "since": {
@@ -83,12 +83,14 @@
       }
     },
     "GetWorkspaces": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "me/workspaces",
       "summary": "Lists workspaces for given user.",
       "responseModel": "getResponse"
     },
     "CreateUser": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "signup",
       "summary": "Sign up as a new user.",
@@ -192,6 +194,7 @@
       }
     },
     "GetTimeEntries": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "me/time_entries",
       "summary": "Get time entries started in a specific time range.If start_date and end_date are not specified, time entries started during the last 9 days are returned.",
@@ -220,11 +223,13 @@
       }
     },
     "GetCurrentTimeEntry": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "me/time_entries/current",
       "summary": "Get Current Time Entry"
     },
     "CreateTimeEntry": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/time_entries",
       "summary": "Creates a new workspace TimeEntry.",
@@ -291,6 +296,7 @@
       }
     },
     "UpdateTimeEntry": {
+      "_todo": "Test needed",
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
       "summary": "Updates a workspace time entry.",
@@ -363,6 +369,7 @@
       }
     },
     "DeleteTimeEntry": {
+      "_todo": "Test needed",
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}",
       "summary": "Deletes a workspace time entry.",
@@ -383,6 +390,7 @@
       }
     },
     "StopTimeEntry": {
+      "_todo": "Test needed",
       "httpMethod": "PATCH",
       "uri": "workspaces/{workspace_id}/time_entries/{time_entry_id}/stop",
       "summary": "Stop Time Entry",
@@ -403,6 +411,7 @@
       }
     },
     "AcceptInvitation": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "organizations/invitations/{invitation_code}/accept",
       "summary": "User connected with invitation is marked as joined, email is sent to the inviter.",
@@ -417,6 +426,7 @@
       }
     },
     "RejectInvitation": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "organizations/invitations/{invitation_code}/reject",
       "summary": "User connected with invitation is marked as deleted.",
@@ -431,6 +441,7 @@
       }
     },
     "CreateUserInvitation": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "organizations/{organization_id}/invitations",
       "summary": "Creates a new invitation for the user.",
@@ -479,6 +490,7 @@
       }
     },
     "ResendInvitation": {
+      "_todo": "Test needed",
       "httpMethod": "PUT",
       "uri": "organizations/{organization_id}/invitations/{invitation_code}/resend\n",
       "summary": "Resend invitation email to user.",
@@ -499,6 +511,7 @@
       }
     },
     "GetGroups": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "organizations/{organization_id}/groups",
       "summary": "Returns list of groups in organization based on set of url parameters. List is sorted by name.",
@@ -513,6 +526,7 @@
       }
     },
     "GetWorkspaceWorkspaceUsers": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "organizations/{organization_id}/workspaces/{workspace_id}/workspace_users",
       "summary": "Returns any users who belong to the workspace directly or through at least one group.",
@@ -533,6 +547,7 @@
       }
     },
     "GetWorkspaceUsers": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/users",
       "summary": "List all users for a given workspace.",
@@ -547,6 +562,7 @@
       }
     },
     "UpdateWorkspaceUser": {
+      "_todo": "Test needed",
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
       "summary": "Update the data for a workspace_user in a given workspace.",
@@ -567,6 +583,7 @@
       }
     },
     "DeleteWorkspaceUser": {
+      "_todo": "Test needed",
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/workspace_users/{workspace_user_id}",
       "summary": "Removes user from workspace",
@@ -587,6 +604,7 @@
       }
     },
     "ListClients": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients",
       "summary": "List clients from workspace.",
@@ -603,7 +621,7 @@
     "CreateClient": {
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients",
-      "summary": "Create Client",
+      "summary": "Create Client | https://developers.track.toggl.com/docs/api/clients#post-create-client",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -641,7 +659,7 @@
     "GetClient": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/clients/{client_id}",
-      "summary": "Load client from workspace.",
+      "summary": "Load client from workspace. | https://developers.track.toggl.com/docs/api/clients#get-load-client-from-id",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -661,7 +679,7 @@
     "UpdateClient": {
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/clients/{client_id}",
-      "summary": "Update workspace client.",
+      "summary": "Update workspace client. | https://developers.track.toggl.com/docs/api/clients#put-change-client",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -705,7 +723,7 @@
     "DeleteClient": {
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/clients/{client_id}",
-      "summary": "Delete workspace client.",
+      "summary": "Delete workspace client. | https://developers.track.toggl.com/docs/api/clients#delete-delete-client",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -723,6 +741,7 @@
       }
     },
     "ArchiveClient": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients/{client_id}/archive",
       "summary": "Archives a workspace client and related projects. Only for premium workspaces.",
@@ -743,6 +762,7 @@
       }
     },
     "RestoreClient": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/clients/{client_id}/restore ",
       "summary": "Restores client and all related or specified projects from the given workspace.",
@@ -778,6 +798,7 @@
       }
     },
     "GetProjectUsers": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/project_users",
       "summary": "List all projects users for a given workspace.",
@@ -802,6 +823,7 @@
       }
     },
     "CreateProjectUser": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/project_users",
       "summary": "Include a project user for a given workspace.",
@@ -847,6 +869,7 @@
       }
     },
     "UpdateProjectUsers": {
+      "_todo": "Test needed",
       "httpMethod": "PATCH",
       "uri": "workspaces/{workspace_id}/project_users/{project_user_ids}",
       "summary": "Patch a list of project users for a given workspace.",
@@ -888,7 +911,7 @@
       }
     },
     "DeleteProjectUsers": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/project_users.md#delete-multiple-project-users but not in the v9 docs or the migration guide.",
       "httpMethod": "DELETE",
       "uri": "project_users/{ids}",
       "summary": "Delete multiple Project Users",
@@ -903,6 +926,7 @@
       }
     },
     "UpdateProjectUser": {
+      "_todo": "Test needed",
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/project_users/{project_user_id}",
       "summary": "Update Project User",
@@ -942,6 +966,7 @@
       }
     },
     "DeleteProjectUser": {
+      "_todo": "Test needed",
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/project_users/{project_user_id}",
       "summary": "Delete Project User",
@@ -962,6 +987,7 @@
       }
     },
     "GetProjects": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/projects",
       "summary": "Get projects",
@@ -1036,7 +1062,7 @@
       }
     },
     "DeleteProjects": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md#delete-multiple-projects but not in the v9 docs or the migration guide.",
       "httpMethod": "DELETE",
       "uri": "projects/{ids}",
       "summary": "Delete multiple Project",
@@ -1053,7 +1079,7 @@
     "CreateProject": {
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/projects",
-      "summary": "Create project for given workspace.",
+      "summary": "Create project for given workspace. | https://developers.track.toggl.com/docs/api/projects#post-workspaceprojects",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1206,7 +1232,7 @@
     "GetProject": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/projects/{project_id}",
-      "summary": "Get Project details",
+      "summary": "Get Project details | https://developers.track.toggl.com/docs/api/projects#get-workspaceproject",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1226,7 +1252,7 @@
     "UpdateProject": {
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/projects/{project_id}",
-      "summary": "Update project for given workspace.",
+      "summary": "Update project for given workspace. | https://developers.track.toggl.com/docs/api/projects#put-workspaceproject",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1383,7 +1409,7 @@
     "DeleteProject": {
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/projects/{project_id}",
-      "summary": "Delete project for given workspace.",
+      "summary": "Delete project for given workspace. | https://developers.track.toggl.com/docs/api/projects#delete-workspaceproject",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1401,7 +1427,7 @@
       }
     },
     "GetClientProjects": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md#get-client-projects but not in the v9 docs or the migration guide.",
       "httpMethod": "GET",
       "uri": "clients/{id}/projects",
       "summary": "Get client projects",
@@ -1421,6 +1447,7 @@
       }
     },
     "GetProjectTasks": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
       "summary": "Get project tasks for given workspace.",
@@ -1441,6 +1468,7 @@
       }
     },
     "UpdateTasks": {
+      "_todo": "Test needed",
       "httpMethod": "PATCH",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_ids}",
       "summary": "Update project tasks for given workspace.",
@@ -1492,7 +1520,7 @@
       }
     },
     "DeleteTasks": {
-      "_todo": "This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
+      "_todo": "Test needed. / This is defined in the v8 docs https://github.com/toggl/toggl_api_docs/blob/master/chapters/tasks.md#delete-multiple-tasks but not in the v9 docs or the migration guide.",
       "httpMethod": "DELETE",
       "uri": "tasks/{ids}",
       "summary": "Delete Tasks",
@@ -1507,6 +1535,7 @@
       }
     },
     "CreateTask": {
+      "_todo": "Test needed",
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks",
       "summary": "Create Task",
@@ -1552,6 +1581,7 @@
       }
     },
     "GetTask": {
+      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
       "summary": "Get Task",
@@ -1578,6 +1608,7 @@
       }
     },
     "UpdateTask": {
+      "_todo": "Test needed",
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
       "summary": "Update project task for given workspace.",
@@ -1626,6 +1657,7 @@
       }
     },
     "DeleteTask": {
+      "_todo": "Test needed",
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/projects/{project_id}/tasks/{task_id}",
       "summary": "Delete projects task for given workspace.",
@@ -1654,7 +1686,7 @@
     "GetTags": {
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/tags",
-      "summary": "List Workspace tags.",
+      "summary": "List Workspace tags. | https://developers.track.toggl.com/docs/api/tags#get-tags",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1668,7 +1700,7 @@
     "CreateTag": {
       "httpMethod": "POST",
       "uri": "workspaces/{workspace_id}/tags",
-      "summary": "Create Tag",
+      "summary": "Create Tag | https://developers.track.toggl.com/docs/api/tags#post-create-tag",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1688,7 +1720,7 @@
     "UpdateTag": {
       "httpMethod": "PUT",
       "uri": "workspaces/{workspace_id}/tags/{tag_id}",
-      "summary": "Update workspace tags.",
+      "summary": "Update workspace tags. | https://developers.track.toggl.com/docs/api/tags#put-update-tag",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1714,7 +1746,7 @@
     "DeleteTag": {
       "httpMethod": "DELETE",
       "uri": "workspaces/{workspace_id}/tags/{tag_id}",
-      "summary": "Delete workspace tags.",
+      "summary": "Delete workspace tags. | https://developers.track.toggl.com/docs/api/tags#delete-delete-tag",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
