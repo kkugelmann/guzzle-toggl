@@ -986,10 +986,9 @@
       }
     },
     "GetProjects": {
-      "_todo": "Test needed",
       "httpMethod": "GET",
       "uri": "workspaces/{workspace_id}/projects",
-      "summary": "Get projects",
+      "summary": "Get projects for given workspace. | https://developers.track.toggl.com/docs/api/projects#get-workspaceprojects",
       "responseModel": "getResponse",
       "parameters": {
         "workspace_id": {
@@ -1001,16 +1000,20 @@
         "active": {
           "location": "query",
           "type": "string",
+          "required": false,
+          "default": "true",
           "description": "possible values true/false/both. By default true. If false, only archived projects are returned."
         },
         "since": {
           "location": "query",
           "type": "integer",
+          "required": false,
           "description": "Retrieve projects created/modified/deleted since this date using UNIX timestamp."
         },
         "billable": {
           "location": "query",
-          "type": "boolean"
+          "type": "boolean",
+          "required": false
         },
         "user_ids": {
           "location": "query",
