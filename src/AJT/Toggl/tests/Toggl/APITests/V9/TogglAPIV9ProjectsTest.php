@@ -30,6 +30,41 @@ class TogglAPIV9ProjectsTest extends TogglAPIV9TestCase
     /**
      * https://developers.track.toggl.com/docs/api/projects#get-workspaceprojects
      */
+    public function testGetProjects(): void
+    {
+        $uniqueId = rand(0, 1000000);
+        $new_projects = [
+            ['name' => 'AAA test project one' . $uniqueId],
+            ['name' => 'AAA test project two' . $uniqueId],
+            ['name' => 'AAA test project three' . $uniqueId],
+        ];
+        $projects_created = [];
+        foreach ($new_projects as $new_project) {
+            $project_created = $this->client->createProject([
+                'workspace_id' => $this->workspace_id,
+                'name' => $new_project['name'],
+            ])->toArray();
+            $project_created['created_at'] = $project_created['at'];
+            $project_created['actual_hours'] ??= 0;
+            $projects_created[] = $project_created;
+        }
+
+        $projects_listed = $this->client->getProjects([
+            'workspace_id' => $this->workspace_id,
+            'active' => 'both',
+        ])->toArray();
+        usort($projects_listed, function ($a, $b) {
+            return $a['id'] <=> $b['id'];
+        });
+        $this->assertEquals($projects_created, $projects_listed);
+
+        foreach ($projects_created as $project_created) {
+            @$this->client->deleteProject([
+                'workspace_id' => $this->workspace_id,
+                'project_id' => $project_created['id'],
+            ]);
+        }
+    }
 
     /**
      * https://developers.track.toggl.com/docs/api/projects#patch-workspaceprojects
