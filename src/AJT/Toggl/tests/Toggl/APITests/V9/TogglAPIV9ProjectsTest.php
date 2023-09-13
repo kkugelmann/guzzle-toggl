@@ -105,4 +105,29 @@ class TogglAPIV9ProjectsTest extends TogglAPIV9TestCase
         $this->assertEmpty($delete_result);
     }
 
+    /**
+     * https://developers.track.toggl.com/docs/api/projects#patch-workspaceprojects
+     */
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // to flush your Projects in you Toggl Workspace uncomment this (WARNING: use a testing Toggl Workspace!)
+        // $this->flushProjects();
+    }
+
+    private function flushProjects(): void
+    {
+        $projects_listed = $this->client->getProjects([
+            'workspace_id' => $this->workspace_id,
+            'active' => 'both',
+        ])->toArray();
+        foreach ($projects_listed as $project) {
+            $this->client->deleteProject([
+                'workspace_id' => $this->workspace_id,
+                'project_id' => $project['id'],
+            ]);
+        }
+    }
+
 }

@@ -27,8 +27,11 @@ class TogglAPIV9ClientsTest extends TogglAPIV9TestCase
 
         $clients_listed = $this->client->listClients([
             'workspace_id' => $this->workspace_id,
-        ]);
-        $this->assertEquals($clients_created, $clients_listed->toArray());
+        ])->toArray();
+        usort($clients_listed, function ($a, $b) {
+            return $a['id'] <=> $b['id'];
+        });
+        $this->assertEquals($clients_created, $clients_listed);
 
         foreach ($clients_created as $client_created) {
             @$this->client->deleteClient([
@@ -87,4 +90,23 @@ class TogglAPIV9ClientsTest extends TogglAPIV9TestCase
      * https://developers.track.toggl.com/docs/api/clients#post-restores-client-and-related-projects
      */
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // to flush your Clients in you Toggl Workspace uncomment this (WARNING: use a testing Toggl Workspace!)
+        // $this->flushClients();
+    }
+
+    private function flushClients(): void
+    {
+        $clients_listed = $this->client->listClients([
+            'workspace_id' => $this->workspace_id,
+        ]);
+        foreach ($clients_listed as $client_created) {
+            @$this->client->deleteClient([
+                'workspace_id' => $this->workspace_id,
+                'client_id' => $client_created['id'],
+            ]);
+        }
+    }
 }

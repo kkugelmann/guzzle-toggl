@@ -45,4 +45,24 @@ class TogglAPIV9TagsTest extends TogglAPIV9TestCase
         $this->assertEmpty($delete_result);
     }
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // to flush your Clients in you Toggl Workspace uncomment this (WARNING: use a testing Toggl Workspace!)
+        // $this->flushTags();
+    }
+
+    private function flushTags(): void
+    {
+        $tag_listed = $this->client->getTags([
+            'workspace_id' => $this->workspace_id,
+        ]);
+        foreach ($tag_listed as $tag_created) {
+            @$this->client->deleteTag([
+                'workspace_id' => $this->workspace_id,
+                'tag_id' => $tag_created['id'],
+            ]);
+        }
+    }
+
 }
