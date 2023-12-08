@@ -1641,16 +1641,19 @@
           "description": "The name of the task (string, required, unique in project)"
         },
         "user_id": {
+          "location": "json",
           "type": "integer",
           "required": false,
           "description": "user ID, to whom the task is assigned to (integer, not required)"
         },
         "estimated_seconds": {
+          "location": "json",
           "type": "integer",
           "required": false,
           "description": "estimated duration of task in seconds (integer, not required)"
         },
         "active": {
+          "location": "json",
           "type": "boolean",
           "required": false,
           "default": true,
